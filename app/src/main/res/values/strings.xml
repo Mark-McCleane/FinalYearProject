@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SAM app</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

@@ -18,17 +18,17 @@ import java.io.IOException;
         private String outputFile;
         private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
         private boolean permissionToRecordAccepted = false;
-        private String [] permissions = {Manifest.permission.RECORD_AUDIO};
+        private String[] permissions = {Manifest.permission.RECORD_AUDIO};
+
         @Override
         public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-            switch (requestCode){
+            switch (requestCode) {
                 case REQUEST_RECORD_AUDIO_PERMISSION:
-                    permissionToRecordAccepted  = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                    permissionToRecordAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                     break;
             }
-            if (!permissionToRecordAccepted ) finish();
-
+            if (!permissionToRecordAccepted) finish();
         }
 
         @Override
@@ -40,9 +40,9 @@ import java.io.IOException;
             record = (Button) findViewById(R.id.record);
             stop.setEnabled(false);
             play.setEnabled(false);
-            /*outputFile = Environment.getExternalStorageDirectory().getAbsolutePath() + "/recording.3gp";
+            outputFile = Environment.getExternalStorageDirectory().getAbsolutePath() + "/recording.3gp";
             myAudioRecorder = new MediaRecorder();
-//            myAudioRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+            myAudioRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
             myAudioRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
             myAudioRecorder.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB);
             myAudioRecorder.setOutputFile(outputFile);
@@ -50,14 +50,13 @@ import java.io.IOException;
             record.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     try {
                         myAudioRecorder.prepare();
                         myAudioRecorder.start();
                     } catch (IllegalStateException ise) {
-                        // make something ...
+
                     } catch (IOException ioe) {
-                        // make something
+
                     }
                     record.setEnabled(false);
                     stop.setEnabled(true);
@@ -91,6 +90,6 @@ import java.io.IOException;
                         // make something
                     }
                 }
-            });        }
-*/
-    }}
+            });
+        }
+    }

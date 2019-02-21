@@ -24,6 +24,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        //via bundle
+        String text = "IT Carlow"; //via bundle get string
+
+        double longitude_CoOrds = -6.9359121; //manually IT Carlow coords
+        double latitude_CoOrds = 52.8272088;
+
+        LatLng location = new LatLng(latitude_CoOrds, longitude_CoOrds);
+        mMap.addMarker(new MarkerOptions().position(location).title(text));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+    }
 
     /**
      * Manipulates the map once available.
@@ -33,14 +47,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * If Google Play services is not installed on the device, the user will be prompted to install
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
-     */
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-    }
+    */
 }
