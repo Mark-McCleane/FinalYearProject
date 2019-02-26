@@ -7,7 +7,9 @@ import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 import java.io.IOException;
@@ -54,9 +56,9 @@ import java.io.IOException;
                         myAudioRecorder.prepare();
                         myAudioRecorder.start();
                     } catch (IllegalStateException ise) {
-
-                    } catch (IOException ioe) {
-
+                        Log.d("Error","Illegal State Exception Found!!!");
+                    }catch (IOException ioe) {
+                        Log.d("Error","IO Exception Found!!!");
                     }
                     record.setEnabled(false);
                     stop.setEnabled(true);
@@ -87,9 +89,11 @@ import java.io.IOException;
                         mediaPlayer.start();
                         Toast.makeText(getApplicationContext(), "Playing Audio", Toast.LENGTH_LONG).show();
                     } catch (Exception e) {
-                        // make something
+
                     }
                 }
             });
+            AutoCompleteTextView speechToText = findViewById(R.id.speechToTextATV);
+            speechToText.setText("File: " + outputFile);
         }
     }
