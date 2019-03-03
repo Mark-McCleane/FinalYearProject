@@ -30,6 +30,7 @@ public class sam_app extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.setTitle("SAM APP");
         setContentView(R.layout.activity_sam_app);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -44,7 +45,6 @@ public class sam_app extends AppCompatActivity {
                         RecognizerIntent.LANGUAGE_MODEL_FREE_FORM) ;
                 intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS,1);
                 speechRecognizer.startListening(intent);
-
             }
         });
         startTextToSpeech();
@@ -53,7 +53,6 @@ public class sam_app extends AppCompatActivity {
 
     private void startSpeechRecognizer() {
         try {
-
             boolean speechRecogniserAvalible = SpeechRecognizer.isRecognitionAvailable(getApplicationContext());
             if(speechRecogniserAvalible) {
                 speechRecognizer = SpeechRecognizer.createSpeechRecognizer(getApplicationContext());
@@ -116,10 +115,12 @@ public class sam_app extends AppCompatActivity {
             say("The time is \"\t" + time + "\t\"");
         }
         else if(userCommand.contains("directions")) {
-            if(userCommand.contains("carlow it") || userCommand.contains("it carlow") ){
+            if(userCommand.contains("carlow it") || userCommand.contains("it carlow") ||
+                    userCommand.contains("carlow i t") || userCommand.contains("i t carlow") ||
+                    userCommand.contains("80 carlow")){
                 Intent goToDirections = new Intent();
-                goToDirections.setClass(getApplicationContext(), MapsActivity.class);
                 say("Giving directions to Carlow IT");
+                goToDirections.setClass(getApplicationContext(), MapsActivity.class);
                 startActivity(goToDirections);
             }
         }
