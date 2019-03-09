@@ -131,7 +131,7 @@ public class sam_app extends AppCompatActivity {
         }
         else if(userCommand.contains("call")){
             getContactList();
-//            String phoneNo = null;
+            //            String phoneNo = null;
 //            Intent intent = new Intent(Intent.ACTION_DIAL);
 //            intent.setData(Uri.parse("tel:" + phoneNo));
 //            startActivity(intent);
@@ -144,6 +144,7 @@ public class sam_app extends AppCompatActivity {
                 null, null, null, null);
         ArrayList<String> phoneNumber = new ArrayList<>();
         ArrayList<String> contactName = new ArrayList<>();
+        ArrayList<String> contactID= new ArrayList<>();
 
         // if cursor found
         if ((cur != null ? cur.getCount() : 0) > 0) {
@@ -166,17 +167,19 @@ public class sam_app extends AppCompatActivity {
                         //send contacts to new activity
                         contactName.add(name);
                         phoneNumber.add(phoneNo);
+                        contactID.add(id);
                     }
                     pCur.close();
                 }
             }
         }
-        if(cur!=null){
+        if(cur!=null) {
             cur.close();
         }
         Intent in = new Intent();
         in.putExtra("contact names", contactName);
         in.putExtra("phone numbers",phoneNumber);
+        in.putExtra("contact id", contactID);
         in.setClass(getApplicationContext(), callUser.class);
         startActivity(in);
     }

@@ -11,13 +11,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="30128819-bfa0-409f-bb18-171d70014973" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/samapp/callUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/layout/activity_call_user.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/samapp/callUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/samapp/callUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/samapp/sam_app.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/samapp/sam_app.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_call_user.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_call_user.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,31 +53,31 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gradle" value="3" />
-          <entry key="java" value="36" />
+          <entry key="java" value="37" />
           <entry key="xml" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Groovy" value="3" />
-          <entry key="JAVA" value="36" />
+          <entry key="JAVA" value="37" />
           <entry key="XML" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gradle" value="43" />
-          <entry key="java" value="2521" />
-          <entry key="txt" value="273" />
-          <entry key="xml" value="72" />
+          <entry key="java" value="3164" />
+          <entry key="txt" value="318" />
+          <entry key="xml" value="94" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="43" />
-          <entry key="JAVA" value="2521" />
-          <entry key="PLAIN_TEXT" value="273" />
-          <entry key="XML" value="72" />
+          <entry key="JAVA" value="3164" />
+          <entry key="PLAIN_TEXT" value="318" />
+          <entry key="XML" value="94" />
         </counts>
       </usages-collector>
     </session>
@@ -89,8 +87,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/sam_app.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="180" column="26" selection-start-line="180" selection-start-column="26" selection-end-line="180" selection-end-column="26" />
+            <state>
               <folding>
                 <element signature="e#4857#4893#0" />
               </folding>
@@ -98,27 +95,36 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_call_user.xml">
           <provider selected="true" editor-type-id="android-designer2" />
-          <provider editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/callUser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="13" selection-start-line="13" selection-end-line="13" />
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/callUser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="273">
+              <caret line="46" column="66" selection-start-line="46" selection-start-column="66" selection-end-line="46" selection-end-column="66" />
+              <folding>
+                <element signature="e#734#742#0" expanded="true" />
+                <element signature="e#1242#1395#0" expanded="true" />
+                <element signature="e#1394#1395#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
           <provider editor-type-id="android-manifest" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="71" selection-start-line="11" selection-start-column="71" selection-end-line="11" selection-end-column="71" />
+            <state relative-caret-position="204">
+              <caret line="12" column="68" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
               <folding>
                 <element signature="e#731#749#0" expanded="true" />
                 <element signature="e#1015#1047#0" expanded="true" />
@@ -152,9 +158,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/samapp/MainActivity.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_sam_app.xml" />
-        <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/samapp/sam_app.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_call_user.xml" />
+        <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/samapp/callUser.java" />
       </list>
     </option>
@@ -363,7 +369,14 @@
       <option name="project" value="LOCAL" />
       <updated>1551653492805</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="retrieving contacts">
+      <created>1552168959016</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1552168959017</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -379,13 +392,13 @@
       <window_info id="Designer" order="6" />
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Run" order="0" sideWeight="0.6384266" weight="0.3295082" />
-      <window_info active="true" anchor="bottom" id="Logcat" order="1" sideWeight="0.709531" visible="true" weight="0.3295082" />
-      <window_info anchor="bottom" id="TODO" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.83055973" weight="0.3295082" />
+      <window_info active="true" anchor="bottom" id="Logcat" order="1" sideWeight="0.8729198" visible="true" weight="0.3295082" />
+      <window_info anchor="bottom" id="TODO" order="2" weight="0.3295082" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.8290469" weight="0.3295082" />
       <window_info anchor="bottom" id="Terminal" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.290469" side_tool="true" visible="true" weight="0.3295082" />
+      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.12708019" side_tool="true" weight="0.3295082" />
       <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.49924356" weight="0.3295082" />
-      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.72919816" weight="0.33442622" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.7284418" weight="0.33442622" />
       <window_info anchor="bottom" id="Android Profiler" order="8" />
       <window_info anchor="bottom" id="Messages" order="9" sideWeight="0.49924356" weight="0.3295082" />
       <window_info anchor="bottom" id="Inspection Results" order="10" sideWeight="0.49924356" weight="0.3295082" />
@@ -411,16 +424,17 @@
     <MESSAGE value="Text To Speech working" />
     <MESSAGE value="Speech Recogniser working and directions intent" />
     <MESSAGE value="updated androidManifest, changed sam_app to main activity!&#10;Updated Title" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated androidManifest, changed sam_app to main activity!&#10;Updated Title" />
+    <MESSAGE value="retrieving contacts" />
+    <option name="LAST_COMMIT_MESSAGE" value="retrieving contacts" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/samapp/sam_app.java</url>
-          <line>141</line>
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/samapp/callUser.java</url>
+          <line>43</line>
           <properties />
-          <option name="timeStamp" value="7" />
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -495,13 +509,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="127">
           <caret line="132" selection-start-line="132" selection-end-line="132" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/app/ActivityThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="2950" selection-start-line="2950" selection-end-line="2950" />
         </state>
       </provider>
     </entry>
@@ -589,32 +596,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/content_sam_app.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/app/ActivityThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="2946" selection-start-line="2946" selection-end-line="2946" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/sam_app.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="180" column="26" selection-start-line="180" selection-start-column="26" selection-end-line="180" selection-end-column="26" />
+        <state>
           <folding>
             <element signature="e#4857#4893#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/content_sam_app.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_call_user.xml">
       <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/callUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        <state relative-caret-position="273">
+          <caret line="46" column="66" selection-start-line="46" selection-start-column="66" selection-end-line="46" selection-end-column="66" />
+          <folding>
+            <element signature="e#734#742#0" expanded="true" />
+            <element signature="e#1242#1395#0" expanded="true" />
+            <element signature="e#1394#1395#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
       <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="71" selection-start-line="11" selection-start-column="71" selection-end-line="11" selection-end-column="71" />
+        <state relative-caret-position="204">
+          <caret line="12" column="68" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
           <folding>
             <element signature="e#731#749#0" expanded="true" />
             <element signature="e#1015#1047#0" expanded="true" />
@@ -623,10 +649,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_call_user.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">

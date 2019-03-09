@@ -11,7 +11,18 @@
         android:layout_width="395dp"
         android:layout_height="42dp"
         android:layout_marginTop="68dp"
-        android:background="@android:style/Widget.Spinner"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="8dp" />
+
+    <ImageButton
+        android:id="@+id/callButton"
+        android:layout_width="185dp"
+        android:layout_height="106dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="236dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contactNameSpinner"
+        app:srcCompat="@android:drawable/stat_sys_phone_call" />
 </android.support.constraint.ConstraintLayout>
