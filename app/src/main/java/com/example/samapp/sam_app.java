@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 public class sam_app extends AppCompatActivity {
     private TextToSpeech txtToSpeech;
@@ -118,11 +119,29 @@ public class sam_app extends AppCompatActivity {
         txtView.setText("Audio Input: " + userCommand);
         txtView.setTextSize(20);
         Date date = new Date();
-
+        String time = DateUtils.formatDateTime(getApplicationContext(), date.getTime(),
+                DateUtils.FORMAT_SHOW_TIME);
         if(userCommand.contains("time")) { //word time and what is found
-            String time = DateUtils.formatDateTime(getApplicationContext(), date.getTime(),
-                    DateUtils.FORMAT_SHOW_TIME);
+
             say("The time is \"\t" + time + "\t\"");
+        }
+
+        else if(userCommand.contains("hello") || userCommand.contains("hi")){
+            Random r = new Random();
+            String morningEveningReply;
+            if(Integer.parseInt(time.substring(0,1)) < 12){
+                morningEveningReply = "Good Morning";
+            }
+            else{
+                morningEveningReply = "Good Evening";
+            }
+
+            String[] replies = {"Hello", "Hi","Hola", morningEveningReply};
+            say(replies[r.nextInt(replies.length-1)] );
+
+        }
+        else if(userCommand.contains("your")&& userCommand.contains("name")){
+            say("My name is SAM");
         }
         else if(userCommand.contains("directions")) {
             if(userCommand.contains("carlow it") || userCommand.contains("it carlow") ||
@@ -142,8 +161,7 @@ public class sam_app extends AppCompatActivity {
                     DateUtils.FORMAT_SHOW_YEAR);
             say("The date is " + year);
         }
-        else if(userCommand.contains("message") || userCommand.contains("text")){
-            // TODO: 09/03/2019
+        else if(userCommand.contains("message") || userCommand.contains("text")) {
             getContactList(textUser.class);
         }
         else {
