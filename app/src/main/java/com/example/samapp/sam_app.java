@@ -3,6 +3,7 @@ package com.example.samapp;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
+import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -96,10 +97,12 @@ public class sam_app extends AppCompatActivity {
 
                     @Override
                     public void onPartialResults(Bundle partialResults) {
+
                     }
 
                     @Override
                     public void onEvent(int eventType, Bundle params) {
+
                     }
                 });
             }
@@ -113,8 +116,10 @@ public class sam_app extends AppCompatActivity {
         userCommand = userCommand.toLowerCase(); //simplify command processing
         txtView = findViewById(R.id.audioInput);
         txtView.setText("Audio Input: " + userCommand);
+        txtView.setTextSize(20);
+        Date date = new Date();
+
         if(userCommand.contains("time")) { //word time and what is found
-            Date date = new Date();
             String time = DateUtils.formatDateTime(getApplicationContext(), date.getTime(),
                     DateUtils.FORMAT_SHOW_TIME);
             say("The time is \"\t" + time + "\t\"");
@@ -130,15 +135,23 @@ public class sam_app extends AppCompatActivity {
             }
         }
         else if(userCommand.contains("call")){
-            getContactList();
-            //            String phoneNo = null;
-//            Intent intent = new Intent(Intent.ACTION_DIAL);
-//            intent.setData(Uri.parse("tel:" + phoneNo));
-//            startActivity(intent);
+            getContactList(callUser.class);
+        }
+        else if(userCommand.contains("date")){
+            String year = DateUtils.formatDateTime(getApplicationContext(), date.getTime(),
+                    DateUtils.FORMAT_SHOW_YEAR);
+            say("The date is " + year);
+        }
+        else if(userCommand.contains("message") || userCommand.contains("text")){
+            // TODO: 09/03/2019
+            getContactList(textUser.class);
+        }
+        else {
+            say("Please try again");
         }
     }
 
-    private void getContactList() {
+    private void getContactList(Class goToClass) {
         ContentResolver cr = getContentResolver();
         Cursor cur = cr.query(ContactsContract.Contacts.CONTENT_URI,
                 null, null, null, null);
@@ -180,7 +193,7 @@ public class sam_app extends AppCompatActivity {
         in.putExtra("contact names", contactName);
         in.putExtra("phone numbers",phoneNumber);
         in.putExtra("contact id", contactID);
-        in.setClass(getApplicationContext(), callUser.class);
+        in.setClass(getApplicationContext(), goToClass);
         startActivity(in);
     }
 
@@ -194,7 +207,7 @@ public class sam_app extends AppCompatActivity {
                             Toast.LENGTH_LONG).show();
                     finish(); //exit app because unusable
                 }
-                else{
+                else {
                     txtToSpeech.setLanguage(Locale.ENGLISH);
                     say("TTS Works");
                 }
