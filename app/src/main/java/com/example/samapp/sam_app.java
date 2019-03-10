@@ -227,7 +227,7 @@ public class sam_app extends AppCompatActivity {
                 }
                 else {
                     txtToSpeech.setLanguage(Locale.ENGLISH);
-                    say("TTS Works");
+                    say("Welcome, I am Sam");
                 }
             }
         });
