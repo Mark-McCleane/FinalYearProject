@@ -164,6 +164,11 @@ public class sam_app extends AppCompatActivity {
         else if(userCommand.contains("message") || userCommand.contains("text")) {
             getContactList(textUser.class);
         }
+        else if( userCommand.contains("email")){
+            Intent goToEmail = new Intent(getApplicationContext(), sendEmail.class);
+            say("Opening email");
+            startActivity(goToEmail);
+        }
         else {
             say("Please try again");
         }
@@ -244,7 +249,7 @@ public class sam_app extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause(){
+    protected void onPause() {
         super.onPause();
         txtToSpeech.shutdown();
     }
