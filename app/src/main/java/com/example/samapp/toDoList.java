@@ -1,9 +1,12 @@
 package com.example.samapp;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +17,7 @@ public class toDoList extends AppCompatActivity {
     private TextView tvItemsAmount;
     private Button btnAdd;
     private SQLiteDatabase sqLiteDatabase;
+    private ToDoListAdapter tdla;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,11 @@ public class toDoList extends AppCompatActivity {
         etvItem = findViewById(R.id.etv_input_task);
         tvItemsAmount = findViewById(R.id.tvItemsCount);
         btnAdd = findViewById(R.id.button_add);
+
+        RecyclerView todoListView = findViewById(R.id.toDoList);
+        todoListView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        tdla = new ToDoListAdapter(getApplicationContext(),getAllItems());
+        todoListView.setAdapter(tdla);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,8 +55,12 @@ public class toDoList extends AppCompatActivity {
 
         sqLiteDatabase.insert(toDoList_db.toDoListEntry.TABLE_NAME,null,
                 contentValues);
+        tdla.swapCursor(getAllItems());
         etvItem.getText().clear();
+    }
 
-
+    private Cursor getAllItems() {
+        return sqLiteDatabase.query(toDoList_db.toDoListEntry.TABLE_NAME,null,null,
+                null,null,null,null);
     }
 }
