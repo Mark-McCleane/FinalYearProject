@@ -131,9 +131,12 @@ public class callUser extends AppCompatActivity {
 
     private void processResult(String userInput) {
         userInput = userInput.toLowerCase(); //simplify command processing
+        Toast.makeText(getApplicationContext(),"User Input is :" + userInput,
+                Toast.LENGTH_LONG).show();
         Date date = new Date();
         String time = DateUtils.formatDateTime(getApplicationContext(), date.getTime(),
                 DateUtils.FORMAT_SHOW_TIME);
+
         if (userInput.contains("time")) { //word time and what is found
             sam_app.say("The time is \"\t" + time + "\t\"");
         }
@@ -142,17 +145,17 @@ public class callUser extends AppCompatActivity {
                 Log.d(TAG, "inside for loop");
                 if(userInput.contains(contactNames.get(i).toLowerCase())) {
                     Log.d(TAG, "inside if statement");
-                    Toast.makeText(getApplicationContext(),"contact is " + contactNames.get(i),
-                            Toast.LENGTH_LONG).show();
                     ArrayAdapter tempAdapter = (ArrayAdapter) contactNameSpinner.getAdapter();
                     int spinnerPosition = tempAdapter.getPosition(contactNames.get(i));
                     contactNameSpinner.setSelection(spinnerPosition);
                 }
             }
         }
-        else if(userInput.contains("call")){
+
+        if(userInput.contains("call")){
             onCallButtonClick();
         }
+
     }
 
     private void onCallButtonClick() {
