@@ -169,6 +169,11 @@ public class sam_app extends AppCompatActivity {
             say("Opening email");
             startActivity(goToEmail);
         }
+        else if( userCommand.contains("to do list")){
+            Intent toDoList = new Intent(getApplicationContext(), toDoList.class);
+            say("Opening To Do List");
+            startActivity(toDoList);
+        }
         else {
             say("Please try again");
         }
