@@ -5,19 +5,34 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
+import android.speech.RecognitionListener;
+import android.speech.RecognizerIntent;
+import android.speech.SpeechRecognizer;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
+
+import static com.example.samapp.sam_app.say;
 
 public class callUser extends AppCompatActivity {
     private Spinner contactNameSpinner;
+    private SpeechRecognizer speechRecognizer;
+    private ArrayList<String> contactNames;
+    private final String TAG = "callUser";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +40,7 @@ public class callUser extends AppCompatActivity {
         setContentView(R.layout.activity_call_user);
 
         contactNameSpinner = findViewById(R.id.contactNameSpinner);
-        ArrayList<String> contactNames = getIntent().getExtras().getStringArrayList("contact names");
+        contactNames = getIntent().getExtras().getStringArrayList("contact names");
         Collections.sort(contactNames);
         ArrayAdapter<String> contactNameAdapter = new ArrayAdapter<String>(this, android.R.layout.
                 simple_spinner_dropdown_item, contactNames);
@@ -38,6 +53,106 @@ public class callUser extends AppCompatActivity {
                 onCallButtonClick();
             }
         });
+
+        FloatingActionButton callFab = findViewById(R.id.callFab);
+        callFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                        RecognizerIntent.LANGUAGE_MODEL_FREE_FORM) ;
+                intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS,1);
+                speechRecognizer.startListening(intent);
+            }
+        });
+        startSpeechRecognizer();
+    }
+
+    private void startSpeechRecognizer() {
+        try {
+            boolean speechRecogniserAvalible = SpeechRecognizer.isRecognitionAvailable(getApplicationContext());
+            if(speechRecogniserAvalible) {
+                speechRecognizer = SpeechRecognizer.createSpeechRecognizer(getApplicationContext());
+                speechRecognizer.setRecognitionListener(new RecognitionListener() {
+                    @Override
+                    public void onReadyForSpeech(Bundle params) {
+                        // TODO: 20/03/2019 if needed
+                    }
+
+                    @Override
+                    public void onBeginningOfSpeech() {
+                        // TODO: 20/03/2019 if needed
+                    }
+
+                    @Override
+                    public void onRmsChanged(float rmsdB) {
+                        // TODO: 20/03/2019 if needed
+                    }
+
+                    @Override
+                    public void onBufferReceived(byte[] buffer) {
+                        // TODO: 20/03/2019 if needed
+                    }
+
+                    @Override
+                    public void onEndOfSpeech() {
+                        // TODO: 20/03/2019 if needed
+                    }
+
+                    @Override
+                    public void onError(int error) {
+                        // TODO: 20/03/2019 if needed
+                    }
+
+                    @Override
+                    public void onResults(Bundle bundle) {
+                        List<String> results = bundle.getStringArrayList(
+                                SpeechRecognizer.RESULTS_RECOGNITION
+                        );
+                        processResult(results.get(0));
+                    }
+
+                    @Override
+                    public void onPartialResults(Bundle partialResults) {
+                        // TODO: 20/03/2019 if needed
+                    }
+
+                    @Override
+                    public void onEvent(int eventType, Bundle params) {
+                        // TODO: 20/03/2019 if needed
+                    }
+                });
+            }
+        }
+        catch (Exception exception){
+            Log.d("IO Exception", "Exception Found" + exception.getStackTrace());
+        }
+    }
+
+    private void processResult(String userInput) {
+        userInput = userInput.toLowerCase(); //simplify command processing
+        Date date = new Date();
+        String time = DateUtils.formatDateTime(getApplicationContext(), date.getTime(),
+                DateUtils.FORMAT_SHOW_TIME);
+        if (userInput.contains("time")) { //word time and what is found
+            sam_app.say("The time is \"\t" + time + "\t\"");
+        }
+        else if(userInput.contains("contact")){
+            for(int i = 0; i < contactNames.size(); i++){
+                Log.d(TAG, "inside for loop");
+                if(userInput.contains(contactNames.get(i).toLowerCase())) {
+                    Log.d(TAG, "inside if statement");
+                    Toast.makeText(getApplicationContext(),"contact is " + contactNames.get(i),
+                            Toast.LENGTH_LONG).show();
+                    ArrayAdapter tempAdapter = (ArrayAdapter) contactNameSpinner.getAdapter();
+                    int spinnerPosition = tempAdapter.getPosition(contactNames.get(i));
+                    contactNameSpinner.setSelection(spinnerPosition);
+                }
+            }
+        }
+        else if(userInput.contains("call")){
+            onCallButtonClick();
+        }
     }
 
     private void onCallButtonClick() {
@@ -61,7 +176,6 @@ public class callUser extends AppCompatActivity {
             phoneNumber = c.getString(0);
         }
         c.close();
-
         if(phoneNumber==null) {
             phoneNumber = "Unsaved";
         }

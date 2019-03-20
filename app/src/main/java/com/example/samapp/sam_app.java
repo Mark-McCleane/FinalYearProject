@@ -30,7 +30,7 @@ import java.util.Locale;
 import java.util.Random;
 
 public class sam_app extends AppCompatActivity {
-    private TextToSpeech txtToSpeech;
+    private static TextToSpeech txtToSpeech;
     private SpeechRecognizer speechRecognizer;
     private TextView txtView;
 
@@ -238,7 +238,7 @@ public class sam_app extends AppCompatActivity {
         });
     }
 
-    private void say(String text) {
+    public static void say(String text) {
         if(Build.VERSION.SDK_INT >= 21){
             txtToSpeech.speak(text,TextToSpeech.QUEUE_FLUSH,null,null);
         }

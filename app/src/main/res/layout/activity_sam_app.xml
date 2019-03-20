@@ -41,5 +41,4 @@
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="right|center"
         app:srcCompat="@drawable/ic_mic_black_24dp" />
-
 </android.support.design.widget.CoordinatorLayout>
