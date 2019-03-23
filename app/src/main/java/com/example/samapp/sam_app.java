@@ -169,9 +169,9 @@ public class sam_app extends AppCompatActivity {
             say("Opening email");
             startActivity(goToEmail);
         }
-        else if( userCommand.contains("to do list")){
-            Intent toDoList = new Intent(getApplicationContext(), toDoList.class);
+        else if( userCommand.contains("to do list") || userCommand.contains("to-do list")){
             say("Opening To Do List");
+            Intent toDoList = new Intent(getApplicationContext(), toDoList.class);
             startActivity(toDoList);
         }
         else {
@@ -237,7 +237,7 @@ public class sam_app extends AppCompatActivity {
                 }
                 else {
                     txtToSpeech.setLanguage(Locale.ENGLISH);
-                    say("Welcome, I am Sam");
+                    say("Hi, I am Sam");
                 }
             }
         });

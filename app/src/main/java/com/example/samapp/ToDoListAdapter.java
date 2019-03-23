@@ -70,5 +70,6 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ToDoLi
             //update recyclerview
             notifyDataSetChanged();
         }
+        // TODO: 20/03/2019 delete function!!!
     }
 }
