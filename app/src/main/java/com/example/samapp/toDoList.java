@@ -39,8 +39,8 @@ public class toDoList extends AppCompatActivity {
         todoListView.setAdapter(tdla);
 
         new ItemTouchHelper((new ItemTouchHelper.SimpleCallback(0,
-                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT)  //LEFT AND RIGHT SWIPE TO DEL
-        {
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT){  //LEFT AND RIGHT SWIPE TO DEL
+
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder viewHolder1) {
                 return false;
@@ -59,12 +59,14 @@ public class toDoList extends AppCompatActivity {
                 addItem();
             }
         });
+        setItemCount();
     }
 
     private void removeItem(long tag) {
         sqLiteDatabase.delete(toDoList_db.toDoListEntry.TABLE_NAME,
                 toDoList_db.toDoListEntry._ID + "= ?",new String[]{String.valueOf(tag) }
                 );
+        setItemCount();
     }
 
     private void addItem() {
@@ -80,10 +82,15 @@ public class toDoList extends AppCompatActivity {
                 contentValues);
         tdla.swapCursor(getAllItems());
         etvItem.getText().clear();
+        setItemCount();
     }
 
     private Cursor getAllItems() {
         return sqLiteDatabase.query(toDoList_db.toDoListEntry.TABLE_NAME,null,null,
                 null,null,null,null);
+    }
+
+    private void setItemCount(){
+        tvItemsAmount.setText(String.valueOf(tdla.getItemCount() ));
     }
 }
