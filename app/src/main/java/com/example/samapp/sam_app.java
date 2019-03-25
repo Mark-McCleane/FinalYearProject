@@ -28,6 +28,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class sam_app extends AppCompatActivity {
     private static TextToSpeech txtToSpeech;
@@ -122,6 +123,7 @@ public class sam_app extends AppCompatActivity {
         String time = DateUtils.formatDateTime(getApplicationContext(), date.getTime(),
                 DateUtils.FORMAT_SHOW_TIME);
         if(userCommand.contains("time")) { //word time and what is found
+
             say("The time is \"\t" + time + "\t\"");
         }
 
@@ -165,15 +167,13 @@ public class sam_app extends AppCompatActivity {
         }
         else if( userCommand.contains("email")){
             Intent goToEmail = new Intent(getApplicationContext(), sendEmail.class);
-            say("Opening email");
             startActivity(goToEmail);
         }
         else if( userCommand.contains("to do list") || userCommand.contains("to-do list")){
-            say("Opening To Do List");
             Intent toDoList = new Intent(getApplicationContext(), toDoList.class);
             startActivity(toDoList);
         }
-        else if(userCommand.contains("events") || userCommand.contains("calendar") ){
+        else if(userCommand.contains("calendar")){
             Intent calendarIntent = new Intent(getApplicationContext(), calendar.class);
             startActivity(calendarIntent);
         }
