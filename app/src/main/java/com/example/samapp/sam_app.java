@@ -122,7 +122,6 @@ public class sam_app extends AppCompatActivity {
         String time = DateUtils.formatDateTime(getApplicationContext(), date.getTime(),
                 DateUtils.FORMAT_SHOW_TIME);
         if(userCommand.contains("time")) { //word time and what is found
-
             say("The time is \"\t" + time + "\t\"");
         }
 
@@ -173,6 +172,10 @@ public class sam_app extends AppCompatActivity {
             say("Opening To Do List");
             Intent toDoList = new Intent(getApplicationContext(), toDoList.class);
             startActivity(toDoList);
+        }
+        else if(userCommand.contains("events") || userCommand.contains("calendar") ){
+            Intent calendarIntent = new Intent(getApplicationContext(), calendar.class);
+            startActivity(calendarIntent);
         }
         else {
             say("Please try again");

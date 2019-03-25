@@ -20,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".toDoList"></activity>
+        <activity android:name=".calendar"></activity>
+        <activity android:name=".toDoList" />
         <activity android:name=".sendEmail" />
         <activity android:name=".textUser" />
         <activity android:name=".callUser" />

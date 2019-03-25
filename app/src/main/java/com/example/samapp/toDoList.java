@@ -64,7 +64,7 @@ public class toDoList extends AppCompatActivity {
 
     private void removeItem(long tag) {
         sqLiteDatabase.delete(toDoList_db.toDoListEntry.TABLE_NAME,
-                toDoList_db.toDoListEntry._ID + "= ?",new String[]{String.valueOf(tag) }
+                toDoList_db.toDoListEntry._ID + "= ?", new String[]{String.valueOf(tag) }
                 );
         tdla.swapCursor(getAllItems());
         setItemCount();
