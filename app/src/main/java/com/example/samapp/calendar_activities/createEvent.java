@@ -72,7 +72,7 @@ public class createEvent extends AppCompatActivity implements TimePickerDialog.O
         beginTime.set((int) year,month,date,beginHour,beginminute);
 
         Calendar endTime = Calendar.getInstance();
-        endTime.set((int) year,month,date, finishHour, finishMinute);
+        endTime.set((int) year, month, date, finishHour, finishMinute);
 
         String eventTitle = title.getText().toString();
         String eventDesc = description.getText().toString();

@@ -1,19 +1,20 @@
 package com.example.samapp;
 
 import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.content.Intent;
 import android.database.Cursor;
 import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.provider.ContactsContract;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.speech.tts.TextToSpeech;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateUtils;
@@ -22,18 +23,19 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
-
 public class sam_app extends AppCompatActivity {
     private static TextToSpeech txtToSpeech;
     private SpeechRecognizer speechRecognizer;
     private TextView txtView;
+    //    private String ACCOUNT_TYPE_GOOGLE = "com.google";
+//    private final String[] FEATURES_MAIL = {
+//            "service_mail"
+//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,7 +125,6 @@ public class sam_app extends AppCompatActivity {
         String time = DateUtils.formatDateTime(getApplicationContext(), date.getTime(),
                 DateUtils.FORMAT_SHOW_TIME);
         if(userCommand.contains("time")) { //word time and what is found
-
             say("The time is \"\t" + time + "\t\"");
         }
 
@@ -133,13 +134,11 @@ public class sam_app extends AppCompatActivity {
             if(Integer.parseInt(time.substring(0,1)) < 12){
                 morningEveningReply = "Good Morning";
             }
-            else{
+            else {
                 morningEveningReply = "Good Evening";
             }
-
             String[] replies = {"Hello", "Hi","Hola", morningEveningReply};
             say(replies[r.nextInt(replies.length-1)] );
-
         }
         else if(userCommand.contains("your")&& userCommand.contains("name")){
             say("My name is SAM");
@@ -154,7 +153,7 @@ public class sam_app extends AppCompatActivity {
                 startActivity(goToDirections);
             }
         }
-        else if(userCommand.contains("call")){
+        else if(userCommand.contains("call")) {
             getContactList(callUser.class);
         }
         else if(userCommand.contains("date")){
@@ -165,17 +164,47 @@ public class sam_app extends AppCompatActivity {
         else if(userCommand.contains("message") || userCommand.contains("text")) {
             getContactList(textUser.class);
         }
-        else if( userCommand.contains("email")){
-            Intent goToEmail = new Intent(getApplicationContext(), sendEmail.class);
-            startActivity(goToEmail);
+        else if(userCommand.contains("email")){
+            if(userCommand.contains("email") && (userCommand.contains("view")
+                    || userCommand.contains("read") || userCommand.contains("open"))){
+                // TODO: 27/03/2019 open gmail
+                Intent gmail = new Intent(getPackageManager()
+                        .getLaunchIntentForPackage("com.google.android.gm"));
+                startActivity(gmail);
+            }
+            else{
+                Intent goToEmail = new Intent(getApplicationContext(), sendEmail.class);
+                startActivity(goToEmail);
+            }
         }
-        else if( userCommand.contains("to do list") || userCommand.contains("to-do list")){
+        else if(userCommand.contains("to do list") || userCommand.contains("to-do list")){
             Intent toDoList = new Intent(getApplicationContext(), toDoList.class);
             startActivity(toDoList);
         }
         else if(userCommand.contains("calendar")){
-            Intent calendarIntent = new Intent(getApplicationContext(), calendar.class);
-            startActivity(calendarIntent);
+            if(userCommand.contains("today") || userCommand.contains("todays") ||
+                    userCommand.contains("today's") || userCommand.contains("open")) {
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                    Calendar beginTime = Calendar.getInstance();
+                    long timeInMillis = beginTime.getTimeInMillis();
+                    Uri.Builder builder = CalendarContract.CONTENT_URI.buildUpon();
+                    builder.appendPath("time");
+                    ContentUris.appendId(builder, timeInMillis);
+                    Intent intent = new Intent(Intent.ACTION_VIEW)
+                            .setData(builder.build());
+                    startActivity(intent);
+                }
+                else {
+                    say("Android SDK Version is lower than " + android.os.Build.VERSION_CODES.N
+                    + " and your version is only " + android.os.Build.VERSION.SDK_INT);
+                    return;
+                }
+
+            }
+            else {
+                Intent calendarIntent = new Intent(getApplicationContext(), calendar.class);
+                startActivity(calendarIntent);
+            }
         }
         else {
             say("Please try again");
@@ -198,7 +227,7 @@ public class sam_app extends AppCompatActivity {
                 String name = cur.getString(cur.getColumnIndex(
                         ContactsContract.Contacts.DISPLAY_NAME));
 
-                if (cur.getInt(cur.getColumnIndex(
+                if(cur.getInt(cur.getColumnIndex(
                         ContactsContract.Contacts.HAS_PHONE_NUMBER)) > 0) {
                     Cursor pCur = cr.query(
                             ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
