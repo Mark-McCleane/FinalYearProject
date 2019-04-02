@@ -46,6 +46,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ToDoLi
 
         String item = mCursor.getString(mCursor.getColumnIndex(toDoList_db.toDoListEntry.COLUMN_ITEM));
         long id = mCursor.getLong(mCursor.getColumnIndex(toDoList_db.toDoListEntry._ID));
+
         Log.d(TAG, "onBindViewHolder: " + item);
         
 
@@ -70,5 +71,6 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ToDoLi
             //update recyclerview
             notifyDataSetChanged();
         }
+        // TODO: 20/03/2019 delete function!!!
     }
 }

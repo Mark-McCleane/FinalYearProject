@@ -28,6 +28,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class sam_app extends AppCompatActivity {
     private static TextToSpeech txtToSpeech;
@@ -166,13 +167,15 @@ public class sam_app extends AppCompatActivity {
         }
         else if( userCommand.contains("email")){
             Intent goToEmail = new Intent(getApplicationContext(), sendEmail.class);
-            say("Opening email");
             startActivity(goToEmail);
         }
-        else if( userCommand.contains("to do list")){
+        else if( userCommand.contains("to do list") || userCommand.contains("to-do list")){
             Intent toDoList = new Intent(getApplicationContext(), toDoList.class);
-            say("Opening To Do List");
             startActivity(toDoList);
+        }
+        else if(userCommand.contains("calendar")){
+            Intent calendarIntent = new Intent(getApplicationContext(), calendar.class);
+            startActivity(calendarIntent);
         }
         else {
             say("Please try again");
@@ -237,7 +240,7 @@ public class sam_app extends AppCompatActivity {
                 }
                 else {
                     txtToSpeech.setLanguage(Locale.ENGLISH);
-                    say("Welcome, I am Sam");
+                    say("Hi, I am Sam");
                 }
             }
         });
