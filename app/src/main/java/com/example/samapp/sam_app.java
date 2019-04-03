@@ -24,7 +24,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -83,7 +82,7 @@ public class sam_app extends AppCompatActivity {
         alert.setTitle("Command List");
         String message = "";
         for(int i = 0; i < commandRequest.length;i++){
-            message = message + commandRequest[i] + ":\t\t\t" + commands[i] + "\n";
+            message = message + commandRequest[i] + ":\t\t\tSay " + commands[i] + "\n";
         }
         alert.setMessage(message);
 
@@ -207,7 +206,6 @@ public class sam_app extends AppCompatActivity {
                 year = Calendar.getInstance().getTime();
                 say("The date is " + year);
             }
-
         }
         else if(userCommand.contains("message") || userCommand.contains("text")) {
             getContactList(textUser.class);
@@ -226,7 +224,7 @@ public class sam_app extends AppCompatActivity {
             }
         }
         else if(userCommand.contains("to do list") || userCommand.contains("to-do list")){
-            Intent toDoList = new Intent(getApplicationContext(), toDoList.class);
+            Intent toDoList = new Intent(getApplicationContext(), com.example.samapp.ToDoList.toDoList.class);
             startActivity(toDoList);
         }
         else if(userCommand.contains("calendar")){
@@ -252,6 +250,10 @@ public class sam_app extends AppCompatActivity {
                 Intent calendarIntent = new Intent(getApplicationContext(), calendar.class);
                 startActivity(calendarIntent);
             }
+        }
+        else if(userCommand.contains("alarm")){
+            Intent alarmIntent = new Intent(getApplicationContext(), Alarm.class);
+            startActivity(alarmIntent);
         }
         else {
             say("Please try again");
@@ -316,7 +318,6 @@ public class sam_app extends AppCompatActivity {
                 }
                 else {
                     txtToSpeech.setLanguage(Locale.ENGLISH);
-                    say("Hi, I am Sam");
                 }
             }
         });

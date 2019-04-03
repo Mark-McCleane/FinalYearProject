@@ -15,6 +15,7 @@
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
 
     <application
         android:allowBackup="true"
@@ -23,13 +24,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".hello_world_kotlin"></activity>
-        <activity android:name=".calendar_activities.readUpcomingReminders" />
-        <activity android:name=".calendar_activities.readUpcomingEvents" />
+        <activity android:name=".Alarm"></activity>
         <activity android:name=".calendar_activities.createReminder" />
         <activity android:name=".calendar_activities.createEvent" />
         <activity android:name=".calendar" />
-        <activity android:name=".toDoList" />
+        <activity android:name=".ToDoList.toDoList" />
         <activity android:name=".sendEmail" />
         <activity android:name=".textUser" />
         <activity android:name=".callUser" />

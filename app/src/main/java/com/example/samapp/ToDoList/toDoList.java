@@ -1,4 +1,4 @@
-package com.example.samapp;
+package com.example.samapp.ToDoList;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.samapp.R;
 
 public class toDoList extends AppCompatActivity {
     private EditText etvItem;

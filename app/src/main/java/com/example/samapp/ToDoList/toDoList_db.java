@@ -1,4 +1,4 @@
-package com.example.samapp;
+package com.example.samapp.ToDoList;
 
 import android.provider.BaseColumns;
 
