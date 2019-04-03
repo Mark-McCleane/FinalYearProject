@@ -57,14 +57,6 @@ public class calendar extends AppCompatActivity {
                 goToClass = createReminder.class;
                 break;
 
-            case ("Read Upcoming Events"):
-                goToClass = readUpcomingEvents.class;
-                break;
-
-            case ("Read Upcoming Reminders"):
-                goToClass = readUpcomingReminders.class;
-                break;
-
             default:
                 Toast.makeText(getApplicationContext(), "No Class Selected", Toast.LENGTH_SHORT)
                         .show();

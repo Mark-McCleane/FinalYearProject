@@ -77,7 +77,6 @@ public class createEvent extends AppCompatActivity implements TimePickerDialog.O
         String eventTitle = title.getText().toString();
         String eventDesc = description.getText().toString();
 
-
         Intent intent = new Intent(Intent.ACTION_INSERT)
                 .setData(CalendarContract.Events.CONTENT_URI)
                 .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis() )

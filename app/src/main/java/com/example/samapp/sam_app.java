@@ -1,7 +1,9 @@
 package com.example.samapp;
 
+import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.ContentUris;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.icu.util.Calendar;
@@ -28,10 +30,17 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
+
 public class sam_app extends AppCompatActivity {
     private static TextToSpeech txtToSpeech;
     private SpeechRecognizer speechRecognizer;
     private TextView txtView;
+    private FloatingActionButton helpFab;
+    private String[] commandRequest = {"Call Function","Text Function","Date Function",
+            "Time Function","To-Do List Function","Open Email Function", "Open Calendar"};
+    private String[] commands = {"Call","Text","Date","Time","To-do list","Open Email",
+            "Open calendar"};
+
     //    private String ACCOUNT_TYPE_GOOGLE = "com.google";
 //    private final String[] FEATURES_MAIL = {
 //            "service_mail"
@@ -47,6 +56,7 @@ public class sam_app extends AppCompatActivity {
 
         //auto-generated
         FloatingActionButton fab = findViewById(R.id.fab);
+        helpFab = findViewById(R.id.helpFab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,8 +67,43 @@ public class sam_app extends AppCompatActivity {
                 speechRecognizer.startListening(intent);
             }
         });
+
+        helpFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userNeedsHelp();
+            }
+        });
         startTextToSpeech();
         startSpeechRecognizer();
+    }
+
+    private void userNeedsHelp() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Command List");
+        String message = "";
+        for(int i = 0; i < commandRequest.length;i++){
+            message = message + commandRequest[i] + ":\t\t\t" + commands[i] + "\n";
+        }
+        alert.setMessage(message);
+
+        // Create TextView
+        final TextView input = new TextView (this);
+        alert.setView(input);
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+                // Do something with value!
+            }
+        });
+
+//        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog, int whichButton) {
+//                // Canceled.
+//            }
+//        });
+        alert.show();
     }
 
     private void startSpeechRecognizer() {
@@ -157,9 +202,12 @@ public class sam_app extends AppCompatActivity {
             getContactList(callUser.class);
         }
         else if(userCommand.contains("date")){
-            String year = DateUtils.formatDateTime(getApplicationContext(), date.getTime(),
-                    DateUtils.FORMAT_SHOW_YEAR);
-            say("The date is " + year);
+            Date year = null;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                year = Calendar.getInstance().getTime();
+                say("The date is " + year);
+            }
+
         }
         else if(userCommand.contains("message") || userCommand.contains("text")) {
             getContactList(textUser.class);
@@ -196,10 +244,9 @@ public class sam_app extends AppCompatActivity {
                 }
                 else {
                     say("Android SDK Version is lower than " + android.os.Build.VERSION_CODES.N
-                    + " and your version is only " + android.os.Build.VERSION.SDK_INT);
+                            + " and your version is only " + android.os.Build.VERSION.SDK_INT);
                     return;
                 }
-
             }
             else {
                 Intent calendarIntent = new Intent(getApplicationContext(), calendar.class);
