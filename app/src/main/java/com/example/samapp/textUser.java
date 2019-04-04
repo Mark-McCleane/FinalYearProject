@@ -135,9 +135,9 @@ public class textUser extends AppCompatActivity {
         userInput = userInput.toLowerCase(); //simplify command processing
         Toast.makeText(getApplicationContext(),"User Input is :" + userInput,
                 Toast.LENGTH_LONG).show();
-        Date date = new Date();
-        String time = DateUtils.formatDateTime(getApplicationContext(), date.getTime(),
-                DateUtils.FORMAT_SHOW_TIME);
+//        Date date = new Date();
+//        String time = DateUtils.formatDateTime(getApplicationContext(), date.getTime(),
+//                DateUtils.FORMAT_SHOW_TIME);
 
         if(userInput.contains("contact")){
             for(int i = 0; i < contactNames.size(); i++){
@@ -155,7 +155,7 @@ public class textUser extends AppCompatActivity {
             messageBox.setText(userText);
         }
         else if (userInput.contains("text")){
-            int firstIndex = userInput.indexOf("text");
+//          int firstIndex = userInput.indexOf("text");
             String userText = userInput.substring(4, userInput.length());
             messageBox.setText(userText);
         }
@@ -163,7 +163,6 @@ public class textUser extends AppCompatActivity {
         if(userInput.contains("send")){
             onSMSButtonClick();
         }
-
     }
 
     private void onSMSButtonClick() {

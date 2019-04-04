@@ -90,9 +90,8 @@ public class Alarm extends AppCompatActivity implements TimePickerDialog.OnTimeS
                     WedSW.setChecked(true);
                     ThursSW.setChecked(true);
                     FriSW.setChecked(true);
-
                 }
-                else{
+                else {
                     MonSW.setChecked(false);
                     TuesSW.setChecked(false);
                     WedSW.setChecked(false);
