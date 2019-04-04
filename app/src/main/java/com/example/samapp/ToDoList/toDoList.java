@@ -15,6 +15,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,7 +33,7 @@ public class toDoList extends AppCompatActivity {
     private SQLiteDatabase sqLiteDatabase;
     private ToDoListAdapter tdla;
     private SpeechRecognizer speechRecognizer;
-
+    private FloatingActionButton toDoListFab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +74,7 @@ public class toDoList extends AppCompatActivity {
         });
         setItemCount();
 
-        FloatingActionButton toDoListFab = findViewById(R.id.MicFab);
+        toDoListFab = findViewById(R.id.MicFab);
         toDoListFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,6 +86,18 @@ public class toDoList extends AppCompatActivity {
             }
         });
         startSpeechRecognizer();
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent e) {
+        float x = e.getX();
+        float y = e.getY();
+
+        switch (e.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                toDoListFab.performClick();
+                return true;
+        }
+        return false;
     }
 
     private void removeItem(long tag) {

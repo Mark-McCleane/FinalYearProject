@@ -8,6 +8,7 @@ import android.speech.SpeechRecognizer;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -22,7 +23,8 @@ public class sendEmail extends AppCompatActivity {
     private EditText mETvSubject;
     private EditText mETvMessage;
     private SpeechRecognizer speechRecognizer;
-
+    private FloatingActionButton emailFab;
+    private ImageButton sendButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +34,7 @@ public class sendEmail extends AppCompatActivity {
         mETvSubject = findViewById(R.id.eTvSubject);
         mETvMessage = findViewById(R.id.etvTextMessageInput);
 
-        ImageButton sendButton = findViewById(R.id.sendEmailButton);
+        sendButton = findViewById(R.id.sendEmailButton);
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,8 +42,8 @@ public class sendEmail extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton callFab = findViewById(R.id.callFab);
-        callFab.setOnClickListener(new View.OnClickListener() {
+        emailFab = findViewById(R.id.callFab);
+        emailFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
@@ -131,6 +133,18 @@ public class sendEmail extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent e) {
+        float x = e.getX();
+        float y = e.getY();
+
+        switch (e.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                emailFab.performClick();
+                return true;
+        }
+        return false;
+    }
     private void processResult(String userInput) {
         userInput = userInput.toLowerCase(); //simplify command processing
         Toast.makeText(getApplicationContext(),"User Input is :" + userInput,
@@ -151,6 +165,9 @@ public class sendEmail extends AppCompatActivity {
         else if(userInput.contains("e-mail")){
             String userText = userInput.substring(6, userInput.length());
             mETvMessage.setText(userText);
+        }
+        else if(userInput.contains("send")){
+            sendButton.performClick();
         }
     }
 }

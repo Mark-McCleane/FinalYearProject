@@ -39,11 +39,10 @@ public class sam_app extends AppCompatActivity {
     private FloatingActionButton helpFab;
     private String[] commandRequest = {"Call Function","Text Function","Date Function",
             "Time Function","To-Do List Function","Send Email Function","Open Email Function",
-            "Open Calendar Function","Open Alarm Function"};
+            "Open Calendar Function","Open Alarm Function","Calendar Event/Reminder"};
 
     private String[] commands = {"Call", "Text", "Date", "Time", "To-do list", "Send Email",
-            "Open Email", "Open calendar", "Open Alarm"};
-
+            "Open Email", "Open calendar", "Open Alarm","Calendar"};
     private FloatingActionButton fab;
 
     //    private String ACCOUNT_TYPE_GOOGLE = "com.google";

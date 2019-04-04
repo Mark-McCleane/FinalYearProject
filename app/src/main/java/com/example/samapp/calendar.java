@@ -31,8 +31,6 @@ public class calendar extends AppCompatActivity {
         ArrayList<String> spinnerList = new ArrayList<String>();
         spinnerList.add("Create Event");
         spinnerList.add("Create Reminder");
-        spinnerList.add("Read Upcoming Events");
-        spinnerList.add("Read Upcoming Reminders");
 
         Collections.sort(spinnerList);
         ArrayAdapter<String> spinnerListAdapter = new ArrayAdapter<String>(this, android.R.layout.

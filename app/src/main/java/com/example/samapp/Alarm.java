@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -37,6 +38,7 @@ public class Alarm extends AppCompatActivity implements TimePickerDialog.OnTimeS
     private int beginHour, beginminute = 0;
     private CheckBox everyDayCB, everyWeekDayCB;
     private SpeechRecognizer speechRecognizer;
+    private FloatingActionButton callFab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,7 +116,7 @@ public class Alarm extends AppCompatActivity implements TimePickerDialog.OnTimeS
             }
         });
 
-        FloatingActionButton callFab = findViewById(R.id.callFab);
+         callFab = findViewById(R.id.callFab);
         callFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -290,5 +292,17 @@ public class Alarm extends AppCompatActivity implements TimePickerDialog.OnTimeS
         else if(userInput.contains("save")) {
             saveBtn.performClick();
         }
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent e) {
+        float x = e.getX();
+        float y = e.getY();
+
+        switch (e.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                callFab.performClick();
+                return true;
+        }
+        return false;
     }
 }

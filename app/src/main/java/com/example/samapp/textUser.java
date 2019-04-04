@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -33,6 +34,7 @@ public class textUser extends AppCompatActivity {
     private SpeechRecognizer speechRecognizer;
     private ArrayList<String> contactNames;
     private String TAG = "textUser";
+    private FloatingActionButton textFab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +58,8 @@ public class textUser extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton callFab = findViewById(R.id.callFab);
-        callFab.setOnClickListener(new View.OnClickListener() {
+        textFab = findViewById(R.id.callFab);
+        textFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
@@ -195,5 +197,17 @@ public class textUser extends AppCompatActivity {
             phoneNumber = "Unsaved";
         }
         return phoneNumber;
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent e) {
+        float x = e.getX();
+        float y = e.getY();
+
+        switch (e.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                textFab.performClick();
+                return true;
+        }
+        return false;
     }
 }
