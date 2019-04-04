@@ -11,7 +11,7 @@
         android:id="@+id/etv_input_task"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint='Say "Task"' />
+        android:hint='Say "Task" Or "Task Add"' />
 
     <TextView
         android:id="@+id/tvItemsCount"
@@ -51,5 +51,4 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/tvItemsCount" />
-
     </RelativeLayout>
