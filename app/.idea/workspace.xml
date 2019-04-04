@@ -11,7 +11,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="30128819-bfa0-409f-bb18-171d70014973" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_to_do_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_to_do_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/samapp/Alarm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/samapp/Alarm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/samapp/sam_app.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/samapp/sam_app.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_alarm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_alarm.xml" afterDir="false" />
     </list>
     <ignored path="C:\Users\Mark College\Desktop\ClickMe\Files\SAMapp\app\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -78,37 +81,37 @@
         <counts>
           <entry key="class" value="1" />
           <entry key="gradle" value="7" />
-          <entry key="java" value="137" />
+          <entry key="java" value="146" />
           <entry key="kt" value="1" />
-          <entry key="xml" value="55" />
+          <entry key="xml" value="63" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
           <entry key="Groovy" value="7" />
-          <entry key="JAVA" value="137" />
+          <entry key="JAVA" value="146" />
           <entry key="Kotlin" value="1" />
-          <entry key="XML" value="55" />
+          <entry key="XML" value="63" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="29" />
           <entry key="gradle" value="99" />
-          <entry key="java" value="12720" />
+          <entry key="java" value="13424" />
           <entry key="kt" value="213" />
-          <entry key="txt" value="1225" />
-          <entry key="xml" value="950" />
+          <entry key="txt" value="1267" />
+          <entry key="xml" value="978" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="99" />
-          <entry key="JAVA" value="12720" />
+          <entry key="JAVA" value="13424" />
           <entry key="Kotlin" value="213" />
-          <entry key="PLAIN_TEXT" value="1254" />
-          <entry key="XML" value="950" />
+          <entry key="PLAIN_TEXT" value="1296" />
+          <entry key="XML" value="978" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -124,33 +127,14 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_to_do_list.xml">
-          <provider editor-type-id="android-designer2" />
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/sam_app.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="13" column="50" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/ToDoList/toDoList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="184" column="73" lean-forward="true" selection-start-line="184" selection-start-column="73" selection-end-line="184" selection-end-column="73" />
+            <state relative-caret-position="107">
+              <caret line="123" column="5" lean-forward="true" selection-start-line="123" selection-start-column="5" selection-end-line="123" selection-end-column="5" />
               <folding>
-                <element signature="e#2806#3279#0" expanded="true" />
-                <element signature="e#3278#3279#0" expanded="true" />
+                <element signature="e#1635#1691#0" />
+                <element signature="method#userNeedsHelp#0;class#sam_app#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/sendEmail.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="53" column="32" selection-start-line="42" selection-start-column="8" selection-end-line="53" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -176,6 +160,8 @@
       <find>todoList</find>
       <find>todo</find>
       <find>date</find>
+      <find>alarmTime</find>
+      <find>onSw</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2585,7 +2571,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/samapp/toDoList.kt" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/samapp/toDoList.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/samapp/Gmail.java" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/activity_sam_app.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/samapp/calendar_activities/createEvent.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/samapp/HelpFragment.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
@@ -2605,15 +2590,17 @@
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_alarm_clock.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/samapp/AlarmClock.java" />
         <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/activity_alarm.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/samapp/Alarm.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_text_user.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/samapp/sam_app.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_send_email.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/samapp/textUser.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/samapp/sendEmail.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/samapp/ToDoList/toDoList.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_to_do_list.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_alarm.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/samapp/Alarm.java" />
+        <option value="$PROJECT_DIR$/src/main/res/drawable/ic_mic_black_24dp.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_sam_app.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/samapp/sam_app.java" />
       </list>
     </option>
   </component>
@@ -2651,7 +2638,26 @@
             <path>
               <item name="app" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="samapp" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="ToDoList" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="drawable" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
           </expand>
           <select />
@@ -2969,7 +2975,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554384763890</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="updated todo list voice recognition">
+      <created>1554385176278</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1554385176278</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TodoView">
@@ -2986,7 +2999,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" sideWeight="0.50121653" side_tool="true" weight="0.32980332" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.18078668" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.18078668" />
       <window_info id="Structure" order="2" sideWeight="0.33576643" side_tool="true" weight="0.32980332" />
       <window_info id="Favorites" order="3" sideWeight="0.33576643" side_tool="true" weight="0.32980332" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -2995,13 +3008,13 @@
       <window_info id="Capture Tool" order="7" />
       <window_info id="Repositories" order="8" weight="0.32980332" />
       <window_info anchor="bottom" id="Run" order="0" sideWeight="0.6384266" weight="0.3294509" />
-      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.8721634" visible="true" weight="0.31967214" />
+      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.8721634" weight="0.31967214" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.3295082" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.8290469" weight="0.33442622" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.3294509" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.16868381" side_tool="true" weight="1.0" />
       <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.8313162" weight="0.52745426" />
-      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.72768533" weight="0.24918033" />
+      <window_info active="true" anchor="bottom" id="Build" order="7" sideWeight="0.72768533" visible="true" weight="0.3409836" />
       <window_info anchor="bottom" id="Android Profiler" order="8" />
       <window_info anchor="bottom" id="Messages" order="9" sideWeight="0.49924356" weight="0.3295082" />
       <window_info anchor="bottom" id="Inspection Results" order="10" sideWeight="0.49924356" weight="0.3295082" />
@@ -3011,7 +3024,7 @@
       <window_info anchor="right" id="Gradle" order="2" weight="0.32980332" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
-      <window_info anchor="right" x="630" y="134" width="549" height="492" id="Preview" order="5" weight="0.24018839" />
+      <window_info anchor="right" x="630" y="134" width="549" height="492" id="Preview" order="5" weight="0.2397882" />
       <window_info anchor="right" id="Assistant" order="6" visible="true" weight="0.599686" />
     </layout>
     <layout-to-restore>
@@ -3085,7 +3098,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added api key" />
     <MESSAGE value="Finished Audio recorder" />
     <MESSAGE value="Added File location" />
     <MESSAGE value="Text To Speech working" />
@@ -3110,7 +3122,8 @@
     <MESSAGE value="added alarm" />
     <MESSAGE value="added e-mail and text voice function" />
     <MESSAGE value="added todo list" />
-    <option name="LAST_COMMIT_MESSAGE" value="added todo list" />
+    <MESSAGE value="updated todo list voice recognition" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated todo list voice recognition" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3123,7 +3136,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/samapp/Alarm.java</url>
-          <line>110</line>
+          <line>136</line>
           <properties />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
@@ -3140,25 +3153,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/MainActivity.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/ic_mic_black_24dp.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/content_sam_app.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/view/Choreographer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="763" selection-start-line="763" selection-end-line="763" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/view/ViewRootImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="127">
@@ -3183,21 +3177,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/callUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-595">
-          <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_sam_app.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="44" column="33" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/02419751f0d843cf69cb25b20d887cfd/jars/classes.jar!/android/support/v7/app/AlertDialog.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
@@ -3211,14 +3190,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="55">
           <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_call_user.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="39" column="55" selection-start-line="39" selection-start-column="55" selection-end-line="39" selection-end-column="55" />
         </state>
       </provider>
     </entry>
@@ -3317,45 +3288,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/Alarm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="161" column="5" lean-forward="true" selection-start-line="161" selection-start-column="5" selection-end-line="161" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_alarm.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="1887">
-          <caret line="111" column="43" selection-start-line="111" selection-start-column="43" selection-end-line="111" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/sam_app.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="42" column="4" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1536#1592#0" />
-            <element signature="method#userNeedsHelp#0;class#sam_app#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_send_email.xml">
       <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="316">
           <caret line="64" selection-start-line="64" selection-end-line="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/textUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="159" column="41" selection-start-line="158" selection-start-column="12" selection-end-line="159" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -3379,29 +3316,110 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_to_do_list.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/speech/RecognitionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/callUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="147" column="39" lean-forward="true" selection-start-line="147" selection-start-column="39" selection-end-line="147" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_call_user.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="42" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/textUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="148" column="68" selection-start-line="148" selection-start-column="68" selection-end-line="148" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/sendEmail.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="53" column="32" selection-start-line="42" selection-start-column="8" selection-end-line="53" selection-end-column="32" />
+        <state relative-caret-position="446">
+          <caret line="149" column="9" lean-forward="true" selection-start-line="149" selection-start-column="9" selection-end-line="149" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_alarm.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="2431">
+          <caret line="143" column="47" selection-start-line="143" selection-start-column="47" selection-end-line="143" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/content_sam_app.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/ic_mic_black_24dp.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="36" lean-forward="true" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/Alarm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="268" column="16" lean-forward="true" selection-start-line="268" selection-start-column="16" selection-end-line="268" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/ToDoList/toDoList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="184" column="73" lean-forward="true" selection-start-line="184" selection-start-column="73" selection-end-line="184" selection-end-column="73" />
-          <folding>
-            <element signature="e#2806#3279#0" expanded="true" />
-            <element signature="e#3278#3279#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="136">
+          <caret line="53" column="32" lean-forward="true" selection-start-line="53" selection-start-column="32" selection-end-line="53" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_to_do_list.xml">
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/view/MotionEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="202" column="28" selection-start-line="202" selection-start-column="28" selection-end-line="202" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_sam_app.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="13" column="50" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
+        <state relative-caret-position="235">
+          <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/sam_app.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="123" column="5" lean-forward="true" selection-start-line="123" selection-start-column="5" selection-end-line="123" selection-end-column="5" />
+          <folding>
+            <element signature="e#1635#1691#0" />
+            <element signature="method#userNeedsHelp#0;class#sam_app#0" />
+          </folding>
         </state>
       </provider>
     </entry>

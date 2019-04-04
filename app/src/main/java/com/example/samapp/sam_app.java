@@ -19,8 +19,10 @@ import android.speech.tts.TextToSpeech;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.text.format.DateUtils;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,9 +38,13 @@ public class sam_app extends AppCompatActivity {
     private TextView txtView;
     private FloatingActionButton helpFab;
     private String[] commandRequest = {"Call Function","Text Function","Date Function",
-            "Time Function","To-Do List Function","Send Email","Open Email Function", "Open Calendar",};
-    private String[] commands = {"Call","Text","Date","Time","To-do list","Send Email", "Open Email",
-            "Open calendar"};
+            "Time Function","To-Do List Function","Send Email Function","Open Email Function",
+            "Open Calendar Function","Open Alarm Function"};
+
+    private String[] commands = {"Call", "Text", "Date", "Time", "To-do list", "Send Email",
+            "Open Email", "Open calendar", "Open Alarm"};
+
+    private FloatingActionButton fab;
 
     //    private String ACCOUNT_TYPE_GOOGLE = "com.google";
 //    private final String[] FEATURES_MAIL = {
@@ -54,7 +60,7 @@ public class sam_app extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //auto-generated
-        FloatingActionButton fab = findViewById(R.id.fab);
+        fab = findViewById(R.id.fab);
         helpFab = findViewById(R.id.helpFab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +72,7 @@ public class sam_app extends AppCompatActivity {
                 speechRecognizer.startListening(intent);
             }
         });
+
 
         helpFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +110,19 @@ public class sam_app extends AppCompatActivity {
 //            }
 //        });
         alert.show();
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent e) {
+        float x = e.getX();
+        float y = e.getY();
+
+        switch (e.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                fab.performClick();
+                return true;
+        }
+        return false;
     }
 
     private void startSpeechRecognizer() {
@@ -168,7 +188,10 @@ public class sam_app extends AppCompatActivity {
         Date date = new Date();
         String time = DateUtils.formatDateTime(getApplicationContext(), date.getTime(),
                 DateUtils.FORMAT_SHOW_TIME);
+
         if(userCommand.contains("time")) { //word time and what is found
+            Toast.makeText(getApplicationContext(),
+                    "The time is " + time, Toast.LENGTH_LONG).show();
             say("The time is \"\t" + time + "\t\"");
         }
 
@@ -205,6 +228,8 @@ public class sam_app extends AppCompatActivity {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
                 year = Calendar.getInstance().getTime();
                 say("The date is " + year);
+                Toast.makeText(getApplicationContext(), "The date is " + year,
+                        Toast.LENGTH_LONG).show();
             }
         }
         else if(userCommand.contains("message") || userCommand.contains("text")) {

@@ -50,9 +50,12 @@
         android:id="@+id/thurs_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="52dp"
+        android:layout_marginEnd="8dp"
         android:text="Thurs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/wed_switch"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -106,13 +109,14 @@
         app:layout_constraintTop_toBottomOf="@+id/everyDayCB"
         app:srcCompat="@android:drawable/ic_lock_idle_alarm" />
 
-    <EditText
+    <TextView
         android:id="@+id/alarmTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="24dp"
         android:hint="Time"
+        android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/timeButton"
         app:layout_constraintTop_toBottomOf="@+id/evryWeekDayCB" />
 
@@ -120,8 +124,27 @@
         android:id="@+id/saveBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
         android:text="Save"
-        tools:layout_editor_absoluteX="122dp"
-        tools:layout_editor_absoluteY="302dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/alarmTime" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/callFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="84dp"
+        app:layout_anchor="@+id/include"
+        app:layout_anchorGravity="right|center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/evryWeekDayCB"
+        app:srcCompat="@drawable/ic_mic_black_24dp"
+        tools:ignore="MissingConstraints" />
 
 </android.support.constraint.ConstraintLayout>

@@ -1,22 +1,34 @@
 package com.example.samapp;
 
 import android.app.TimePickerDialog;
+import android.appwidget.AppWidgetHost;
 import android.content.Intent;
 import android.provider.AlarmClock;
+import android.speech.RecognitionListener;
+import android.speech.RecognizerIntent;
+import android.speech.SpeechRecognizer;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 public class Alarm extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
     private Button saveBtn;
@@ -24,6 +36,7 @@ public class Alarm extends AppCompatActivity implements TimePickerDialog.OnTimeS
     private Switch MonSW,TuesSW,WedSW,ThursSW,FriSW,SatSW,SunSW;
     private int beginHour, beginminute = 0;
     private CheckBox everyDayCB, everyWeekDayCB;
+    private SpeechRecognizer speechRecognizer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +113,19 @@ public class Alarm extends AppCompatActivity implements TimePickerDialog.OnTimeS
                 }
             }
         });
+
+        FloatingActionButton callFab = findViewById(R.id.callFab);
+        callFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                        RecognizerIntent.LANGUAGE_MODEL_FREE_FORM) ;
+                intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS,1);
+                speechRecognizer.startListening(intent);
+            }
+        });
+        startSpeechRecognizer();
     }
 
     private void onTimeButtonClick() {
@@ -157,7 +183,112 @@ public class Alarm extends AppCompatActivity implements TimePickerDialog.OnTimeS
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         beginHour = hourOfDay;
         beginminute = minute;
-        EditText beginTimeEtv = findViewById(R.id.alarmTime);
+        TextView beginTimeEtv = findViewById(R.id.alarmTime);
         beginTimeEtv.setText(hourOfDay + ":" + minute);
+    }
+
+    private void startSpeechRecognizer() {
+        try {
+            boolean speechRecogniserAvalible = SpeechRecognizer.isRecognitionAvailable(getApplicationContext());
+            if(speechRecogniserAvalible) {
+                speechRecognizer = SpeechRecognizer.createSpeechRecognizer(getApplicationContext());
+                speechRecognizer.setRecognitionListener(new RecognitionListener() {
+                    @Override
+                    public void onReadyForSpeech(Bundle params) {
+                        // TODO: 20/03/2019 if needed
+                    }
+
+                    @Override
+                    public void onBeginningOfSpeech() {
+                        // TODO: 20/03/2019 if needed
+                    }
+
+                    @Override
+                    public void onRmsChanged(float rmsdB) {
+                        // TODO: 20/03/2019 if needed
+                    }
+
+                    @Override
+                    public void onBufferReceived(byte[] buffer) {
+                        // TODO: 20/03/2019 if needed
+                    }
+
+                    @Override
+                    public void onEndOfSpeech() {
+                        // TODO: 20/03/2019 if needed
+                    }
+
+                    @Override
+                    public void onError(int error) {
+                        // TODO: 20/03/2019 if needed
+                    }
+
+                    @Override
+                    public void onResults(Bundle bundle) {
+                        List<String> results = bundle.getStringArrayList(
+                                SpeechRecognizer.RESULTS_RECOGNITION
+                        );
+                        processResult(results.get(0));
+                    }
+
+                    @Override
+                    public void onPartialResults(Bundle partialResults) {
+                        // TODO: 20/03/2019 if needed
+                    }
+
+                    @Override
+                    public void onEvent(int eventType, Bundle params) {
+                        // TODO: 20/03/2019 if needed
+                    }
+                });
+            }
+        }
+        catch (Exception exception){
+            Log.d("IO Exception", "Exception Found" + exception.getStackTrace());
+        }
+    }
+
+    private void processResult(String userInput) {
+        userInput = userInput.toLowerCase(); //simplify command processing
+        Toast.makeText(getApplicationContext(),"User Input is :" + userInput,
+                Toast.LENGTH_LONG).show();
+
+        if(userInput.contains("set days")){
+            String userInputWithoutSetDays = userInput.substring(8, userInput.length());
+
+            if(userInputWithoutSetDays.contains("monday")){
+                MonSW.setChecked(true);
+            }
+            if(userInputWithoutSetDays.contains("tuesday")){
+                TuesSW.setChecked(true);
+            }
+            if(userInputWithoutSetDays.contains("wednesday")){
+                WedSW.setChecked(true);
+            }
+            if(userInputWithoutSetDays.contains("thursday")){
+                ThursSW.setChecked(true);
+            }
+            if(userInputWithoutSetDays.contains("friday")){
+                FriSW.setChecked(true);
+            }
+            if(userInputWithoutSetDays.contains("saturday")){
+                SatSW.setChecked(true);
+            }
+            if(userInputWithoutSetDays.contains("sunday")){
+                SunSW.setChecked(true);
+            }
+            timeButton.performClick();
+        }
+        else if(userInput.contains("every weekday")) {
+            everyWeekDayCB.setChecked(true);
+            timeButton.performClick();
+        }
+        else if(userInput.contains("every day") || userInput.contains("everyday")){
+            everyDayCB.setChecked(true);
+            timeButton.performClick();
+        }
+        else if(userInput.contains("save")) {
+            saveBtn.performClick();
+        }
     }
 }
