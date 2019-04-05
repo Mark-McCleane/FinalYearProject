@@ -1,9 +1,9 @@
-package com.example.samapp;
+package com.example.samapp.ToDoList;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.example.samapp.toDoList_db.*;
+import com.example.samapp.ToDoList.toDoList_db.*;
 
 public class toDoListDBHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "todolist.db";

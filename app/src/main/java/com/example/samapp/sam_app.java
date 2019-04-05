@@ -1,39 +1,54 @@
 package com.example.samapp;
 
+import android.app.AlertDialog;
 import android.content.ContentResolver;
+import android.content.ContentUris;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.provider.ContactsContract;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.speech.tts.TextToSpeech;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.text.format.DateUtils;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 public class sam_app extends AppCompatActivity {
     private static TextToSpeech txtToSpeech;
     private SpeechRecognizer speechRecognizer;
     private TextView txtView;
+    private FloatingActionButton helpFab;
+    private String[] commandRequest = {"Call Function","Text Function","Date Function",
+            "Time Function","To-Do List Function","Send Email Function","Open Email Function",
+            "Open Calendar Function","Open Alarm Function","Calendar Event/Reminder"};
+
+    private String[] commands = {"Call", "Text", "Date", "Time", "To-do list", "Send Email",
+            "Open Email", "Open calendar", "Open Alarm","Calendar"};
+    private FloatingActionButton fab;
+
+    //    private String ACCOUNT_TYPE_GOOGLE = "com.google";
+//    private final String[] FEATURES_MAIL = {
+//            "service_mail"
+//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +59,8 @@ public class sam_app extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //auto-generated
-        FloatingActionButton fab = findViewById(R.id.fab);
+        fab = findViewById(R.id.fab);
+        helpFab = findViewById(R.id.helpFab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,8 +71,57 @@ public class sam_app extends AppCompatActivity {
                 speechRecognizer.startListening(intent);
             }
         });
+
+
+        helpFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userNeedsHelp();
+            }
+        });
         startTextToSpeech();
         startSpeechRecognizer();
+    }
+
+    private void userNeedsHelp() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Command List");
+        String message = "";
+        for(int i = 0; i < commandRequest.length;i++){
+            message = message + commandRequest[i] + ":\t\t\tSay " + commands[i] + "\n";
+        }
+        alert.setMessage(message);
+
+        // Create TextView
+        final TextView input = new TextView (this);
+        alert.setView(input);
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+                // Do something with value!
+            }
+        });
+
+//        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog, int whichButton) {
+//                // Canceled.
+//            }
+//        });
+        alert.show();
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent e) {
+        float x = e.getX();
+        float y = e.getY();
+
+        switch (e.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                fab.performClick();
+                return true;
+        }
+        return false;
     }
 
     private void startSpeechRecognizer() {
@@ -122,8 +187,10 @@ public class sam_app extends AppCompatActivity {
         Date date = new Date();
         String time = DateUtils.formatDateTime(getApplicationContext(), date.getTime(),
                 DateUtils.FORMAT_SHOW_TIME);
-        if(userCommand.contains("time")) { //word time and what is found
 
+        if(userCommand.contains("time")) { //word time and what is found
+            Toast.makeText(getApplicationContext(),
+                    "The time is " + time, Toast.LENGTH_LONG).show();
             say("The time is \"\t" + time + "\t\"");
         }
 
@@ -133,49 +200,111 @@ public class sam_app extends AppCompatActivity {
             if(Integer.parseInt(time.substring(0,1)) < 12){
                 morningEveningReply = "Good Morning";
             }
-            else{
+            else {
                 morningEveningReply = "Good Evening";
             }
-
             String[] replies = {"Hello", "Hi","Hola", morningEveningReply};
             say(replies[r.nextInt(replies.length-1)] );
-
         }
         else if(userCommand.contains("your")&& userCommand.contains("name")){
             say("My name is SAM");
         }
-        else if(userCommand.contains("directions")) {
-            if(userCommand.contains("carlow it") || userCommand.contains("it carlow") ||
-                    userCommand.contains("carlow i t") || userCommand.contains("i t carlow") ||
-                    userCommand.contains("80 carlow")){
-                Intent goToDirections = new Intent();
-                say("Giving directions to Carlow IT");
-                goToDirections.setClass(getApplicationContext(), MapsActivity.class);
+        else if(userCommand.contains("directions to")) {
+            Intent goToDirections = new Intent(Intent.ACTION_VIEW);
+
+            //example tesco wexford
+            // String goToLocation = userCommand.substring(10,userCommand.length());
+
+            goToDirections.setData(Uri.parse("http://maps.google.co.in/maps?q=" + userCommand));
+
+            if(goToDirections.resolveActivity(getPackageManager() )!= null) {
                 startActivity(goToDirections);
             }
         }
-        else if(userCommand.contains("call")){
+        else if(userCommand.contains("search")) {
+            Intent search = new Intent(Intent.ACTION_VIEW);
+
+            //example tesco wexford
+            // String goToLocation = userCommand.substring(10,userCommand.length());
+
+            search.setData(Uri.parse("https://www.google.ie/search?q=" + userCommand.substring(7)));
+
+            if(search .resolveActivity(getPackageManager() )!= null) {
+                startActivity(search );
+            }
+        }
+
+        else if(userCommand.contains("call")) {
             getContactList(callUser.class);
         }
         else if(userCommand.contains("date")){
-            String year = DateUtils.formatDateTime(getApplicationContext(), date.getTime(),
-                    DateUtils.FORMAT_SHOW_YEAR);
-            say("The date is " + year);
+            Date year = null;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                year = Calendar.getInstance().getTime();
+                say("The date is " + year);
+                Toast.makeText(getApplicationContext(), "The date is " + year,
+                        Toast.LENGTH_LONG).show();
+            }
         }
         else if(userCommand.contains("message") || userCommand.contains("text")) {
             getContactList(textUser.class);
         }
-        else if( userCommand.contains("email")){
-            Intent goToEmail = new Intent(getApplicationContext(), sendEmail.class);
-            startActivity(goToEmail);
+        else if(userCommand.contains("email")){
+            if(userCommand.contains("email") && (userCommand.contains("view")
+                    || userCommand.contains("read") || userCommand.contains("open"))){
+                // TODO: 27/03/2019 open gmail
+                Intent gmail = new Intent(getPackageManager()
+                        .getLaunchIntentForPackage("com.google.android.gm"));
+                startActivity(gmail);
+            }
+            else{
+                Intent goToEmail = new Intent(getApplicationContext(), sendEmail.class);
+                startActivity(goToEmail);
+            }
         }
-        else if( userCommand.contains("to do list") || userCommand.contains("to-do list")){
-            Intent toDoList = new Intent(getApplicationContext(), toDoList.class);
+        else if(userCommand.contains("to do list") || userCommand.contains("to-do list")){
+            Intent toDoList = new Intent(getApplicationContext(), com.example.samapp.ToDoList.toDoList.class);
             startActivity(toDoList);
         }
         else if(userCommand.contains("calendar")){
-            Intent calendarIntent = new Intent(getApplicationContext(), calendar.class);
-            startActivity(calendarIntent);
+            if(userCommand.contains("today") || userCommand.contains("todays") ||
+                    userCommand.contains("today's") || userCommand.contains("open")) {
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                    Calendar beginTime = Calendar.getInstance();
+                    long timeInMillis = beginTime.getTimeInMillis();
+                    Uri.Builder builder = CalendarContract.CONTENT_URI.buildUpon();
+                    builder.appendPath("time");
+                    ContentUris.appendId(builder, timeInMillis);
+                    Intent intent = new Intent(Intent.ACTION_VIEW)
+                            .setData(builder.build());
+                    startActivity(intent);
+                }
+                else {
+                    say("Android SDK Version is lower than " + android.os.Build.VERSION_CODES.N
+                            + " and your version is only " + android.os.Build.VERSION.SDK_INT);
+                    return;
+                }
+            }
+            else {
+                Intent calendarIntent = new Intent(getApplicationContext(), calendar.class);
+                startActivity(calendarIntent);
+            }
+        }
+        else if(userCommand.contains("youtube")){
+            Intent youtubeIntent = new Intent();
+            youtubeIntent.setData(
+                    Uri.parse("https://www.google.ie/search?q=" + userCommand));
+            startActivity(youtubeIntent);
+
+            //            String videoSearch = userCommand.substring(8,userCommand.length());
+//            Intent youtubeIntent = new Intent();
+//            youtubeIntent.setData(Uri.parse("https://www.youtube.com/results?search_query="
+//                    + videoSearch + "&page=&utm_source=opensearch"));
+//            startActivity(youtubeIntent);
+        }
+        else if(userCommand.contains("alarm")){
+            Intent alarmIntent = new Intent(getApplicationContext(), Alarm.class);
+            startActivity(alarmIntent);
         }
         else {
             say("Please try again");
@@ -198,7 +327,7 @@ public class sam_app extends AppCompatActivity {
                 String name = cur.getString(cur.getColumnIndex(
                         ContactsContract.Contacts.DISPLAY_NAME));
 
-                if (cur.getInt(cur.getColumnIndex(
+                if(cur.getInt(cur.getColumnIndex(
                         ContactsContract.Contacts.HAS_PHONE_NUMBER)) > 0) {
                     Cursor pCur = cr.query(
                             ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
@@ -220,9 +349,10 @@ public class sam_app extends AppCompatActivity {
         if(cur!=null) {
             cur.close();
         }
+
         Intent in = new Intent();
         in.putExtra("contact names", contactName);
-        in.putExtra("phone numbers",phoneNumber);
+        in.putExtra("phone numbers", phoneNumber);
         in.putExtra("contact id", contactID);
         in.setClass(getApplicationContext(), goToClass);
         startActivity(in);
@@ -240,7 +370,6 @@ public class sam_app extends AppCompatActivity {
                 }
                 else {
                     txtToSpeech.setLanguage(Locale.ENGLISH);
-                    say("Hi, I am Sam");
                 }
             }
         });
@@ -251,7 +380,7 @@ public class sam_app extends AppCompatActivity {
             txtToSpeech.speak(text,TextToSpeech.QUEUE_FLUSH,null,null);
         }
         else {
-            //api level less than 21 requires three params
+            //api level less than 21 requires three params, just incase I dedide to lower min api
             txtToSpeech.speak(text,TextToSpeech.QUEUE_FLUSH,null);
         }
     }

@@ -5,12 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".toDoList">
+    tools:context=".ToDoList.toDoList">
 
     <EditText
         android:id="@+id/etv_input_task"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint='Say "Task" Or "Task Add"' />
 
     <TextView
         android:id="@+id/tvItemsCount"
@@ -33,10 +34,21 @@
         android:text="add" />
     <!--this is the todo list part-->
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/MicFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="bottom|center"
+        android:layout_marginTop="59dp"
+        android:layout_marginEnd="71dp"
+        android:layout_toStartOf="@+id/tvItemsCount"
+        app:srcCompat="@drawable/ic_mic_black_24dp"
+        tools:ignore="MissingConstraints" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/toDoList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/tvItemsCount" />
-
     </RelativeLayout>

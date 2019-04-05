@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="Contact"
+        android:hint='Say "Contact"'
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="8dp" />
 
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:hint="Subject"
+        android:hint='Say "Subject"'
         app:layout_constraintTop_toBottomOf="@+id/eTvRecipent"
         tools:layout_editor_absoluteX="16dp" />
 
@@ -33,12 +33,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="8dp"
-        android:minLines="6"
         android:gravity="top|start"
+        android:hint='Say "Email"'
         android:maxLines="10"
-        android:hint="Email Body"
-        android:singleLine="false"
+        android:minLines="6"
         android:scrollbars="vertical"
+        android:singleLine="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,11 +49,24 @@
         android:layout_width="185dp"
         android:layout_height="106dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etvTextMessageInput"
         app:srcCompat="@android:drawable/ic_menu_send" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/callFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="46dp"
+        app:layout_anchorGravity="bottom|center"
+        app:layout_constraintStart_toEndOf="@+id/sendEmailButton"
+        app:layout_constraintTop_toBottomOf="@+id/etvTextMessageInput"
+        app:srcCompat="@drawable/ic_mic_black_24dp"
+        tools:ignore="MissingConstraints" />
 
 </android.support.constraint.ConstraintLayout>
