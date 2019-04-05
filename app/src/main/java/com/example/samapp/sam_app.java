@@ -209,16 +209,31 @@ public class sam_app extends AppCompatActivity {
         else if(userCommand.contains("your")&& userCommand.contains("name")){
             say("My name is SAM");
         }
-        else if(userCommand.contains("directions")) {
-            if(userCommand.contains("carlow it") || userCommand.contains("it carlow") ||
-                    userCommand.contains("carlow i t") || userCommand.contains("i t carlow") ||
-                    userCommand.contains("80 carlow")){
-                Intent goToDirections = new Intent();
-                say("Giving directions to Carlow IT");
-                goToDirections.setClass(getApplicationContext(), MapsActivity.class);
+        else if(userCommand.contains("directions to")) {
+            Intent goToDirections = new Intent(Intent.ACTION_VIEW);
+
+            //example tesco wexford
+            // String goToLocation = userCommand.substring(10,userCommand.length());
+
+            goToDirections.setData(Uri.parse("http://maps.google.co.in/maps?q=" + userCommand));
+
+            if(goToDirections.resolveActivity(getPackageManager() )!= null) {
                 startActivity(goToDirections);
             }
         }
+        else if(userCommand.contains("search")) {
+            Intent search = new Intent(Intent.ACTION_VIEW);
+
+            //example tesco wexford
+            // String goToLocation = userCommand.substring(10,userCommand.length());
+
+            search.setData(Uri.parse("https://www.google.ie/search?q=" + userCommand.substring(7)));
+
+            if(search .resolveActivity(getPackageManager() )!= null) {
+                startActivity(search );
+            }
+        }
+
         else if(userCommand.contains("call")) {
             getContactList(callUser.class);
         }
