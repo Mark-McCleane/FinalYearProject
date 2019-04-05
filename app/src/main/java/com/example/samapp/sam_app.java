@@ -290,6 +290,18 @@ public class sam_app extends AppCompatActivity {
                 startActivity(calendarIntent);
             }
         }
+        else if(userCommand.contains("youtube")){
+            Intent youtubeIntent = new Intent();
+            youtubeIntent.setData(
+                    Uri.parse("https://www.google.ie/search?q=" + userCommand));
+            startActivity(youtubeIntent);
+
+            //            String videoSearch = userCommand.substring(8,userCommand.length());
+//            Intent youtubeIntent = new Intent();
+//            youtubeIntent.setData(Uri.parse("https://www.youtube.com/results?search_query="
+//                    + videoSearch + "&page=&utm_source=opensearch"));
+//            startActivity(youtubeIntent);
+        }
         else if(userCommand.contains("alarm")){
             Intent alarmIntent = new Intent(getApplicationContext(), Alarm.class);
             startActivity(alarmIntent);
@@ -337,9 +349,10 @@ public class sam_app extends AppCompatActivity {
         if(cur!=null) {
             cur.close();
         }
+
         Intent in = new Intent();
         in.putExtra("contact names", contactName);
-        in.putExtra("phone numbers",phoneNumber);
+        in.putExtra("phone numbers", phoneNumber);
         in.putExtra("contact id", contactID);
         in.setClass(getApplicationContext(), goToClass);
         startActivity(in);
@@ -367,7 +380,7 @@ public class sam_app extends AppCompatActivity {
             txtToSpeech.speak(text,TextToSpeech.QUEUE_FLUSH,null,null);
         }
         else {
-            //api level less than 21 requires three params
+            //api level less than 21 requires three params, just incase I dedide to lower min api
             txtToSpeech.speak(text,TextToSpeech.QUEUE_FLUSH,null);
         }
     }
