@@ -10,7 +10,7 @@
         android:id="@+id/dateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="108dp"
+        android:layout_marginStart="68dp"
         android:layout_marginTop="40dp"
         android:src="@android:drawable/ic_lock_idle_alarm"
         app:layout_constraintStart_toEndOf="@+id/date"
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        android:hint="Date"
+        android:hint='Say "Date"'
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/finishingTime" />
 
@@ -81,7 +81,7 @@
     <EditText
         android:id="@+id/descriptionETV"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="223dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"

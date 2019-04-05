@@ -161,10 +161,12 @@ public class sendEmail extends AppCompatActivity {
         else if(userInput.contains("email")){
             String userText = userInput.substring(5, userInput.length());
             mETvMessage.setText(userText);
+            sendButton.performClick();
         }
         else if(userInput.contains("e-mail")){
             String userText = userInput.substring(6, userInput.length());
             mETvMessage.setText(userText);
+            sendButton.performClick();
         }
         else if(userInput.contains("send")){
             sendButton.performClick();

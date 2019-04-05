@@ -35,7 +35,7 @@ public class textUser extends AppCompatActivity {
     private ArrayList<String> contactNames;
     private String TAG = "textUser";
     private FloatingActionButton textFab;
-
+    private ImageButton sendButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +50,7 @@ public class textUser extends AppCompatActivity {
 
         messageBox = findViewById(R.id.textMessageInput);
 
-        ImageButton sendButton = findViewById(R.id.sendButton);
+        sendButton = findViewById(R.id.sendButton);
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -160,6 +160,7 @@ public class textUser extends AppCompatActivity {
 //          int firstIndex = userInput.indexOf("text");
             String userText = userInput.substring(4, userInput.length());
             messageBox.setText(userText);
+            sendButton.performClick();
         }
 
         if(userInput.contains("send")){
