@@ -35,6 +35,7 @@ public class callUser extends AppCompatActivity {
     private ArrayList<String> contactNames;
     private final String TAG = "callUser";
     private FloatingActionButton callFab;
+    private ImageButton callButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +48,7 @@ public class callUser extends AppCompatActivity {
                 simple_spinner_dropdown_item, contactNames);
         contactNameSpinner.setAdapter(contactNameAdapter);
 
-        ImageButton callButton = findViewById(R.id.callButton);
+        callButton = findViewById(R.id.callButton);
         callButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,10 +139,7 @@ public class callUser extends AppCompatActivity {
         String time = DateUtils.formatDateTime(getApplicationContext(), date.getTime(),
                 DateUtils.FORMAT_SHOW_TIME);
 
-        if (userInput.contains("time")) { //word time and what is found
-            sam_app.say("The time is \"\t" + time + "\t\"");
-        }
-        else if(userInput.contains("contact")){
+        if(userInput.contains("call")){
             for(int i = 0; i < contactNames.size(); i++){
                 Log.d(TAG, "inside for loop");
                 if(userInput.contains(contactNames.get(i).toLowerCase())) {
@@ -149,13 +147,26 @@ public class callUser extends AppCompatActivity {
                     ArrayAdapter tempAdapter = (ArrayAdapter) contactNameSpinner.getAdapter();
                     int spinnerPosition = tempAdapter.getPosition(contactNames.get(i));
                     contactNameSpinner.setSelection(spinnerPosition);
+                    break;
+                }
+            }
+            callButton.performClick();
+        }
+
+        if(userInput.contains("contact")){
+            for(int i = 0; i < contactNames.size(); i++) {
+                if (userInput.contains(contactNames.get(i).toLowerCase())) {
+                    Log.d(TAG, "inside if statement");
+                    ArrayAdapter tempAdapter = (ArrayAdapter) contactNameSpinner.getAdapter();
+                    int spinnerPosition = tempAdapter.getPosition(contactNames.get(i));
+                    contactNameSpinner.setSelection(spinnerPosition);
                 }
             }
         }
-
-        if(userInput.contains("call")){
+        else if(userInput.contains("call")){
             onCallButtonClick();
         }
+
 
     }
 

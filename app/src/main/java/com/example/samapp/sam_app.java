@@ -3,6 +3,7 @@ package com.example.samapp;
 import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.ContentUris;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -26,6 +27,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.samapp.calendar_activities.createEvent;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -37,12 +41,14 @@ public class sam_app extends AppCompatActivity {
     private SpeechRecognizer speechRecognizer;
     private TextView txtView;
     private FloatingActionButton helpFab;
-    private String[] commandRequest = {"Call Function","Text Function","Date Function",
-            "Time Function","To-Do List Function","Send Email Function","Open Email Function",
-            "Open Calendar Function","Open Alarm Function","Calendar Event/Reminder"};
+    private String[] commandRequest = {"Call Function","Ring Function", "Text Function", "Date Function",
+            "Time Function", "To-Do List Function", "Send Email Function", "Open Email Function",
+            "Open Calendar Function", "Open Alarm Function", "Create Calendar Event","Search Function",
+            "Youtube Search Function", "Direction-To Function"};
 
-    private String[] commands = {"Call", "Text", "Date", "Time", "To-do list", "Send Email",
-            "Open Email", "Open calendar", "Open Alarm","Calendar"};
+    private String[] commands = {"Call","Ring + your contact name\n", "Text", "Date", "Time", "To-do list", "Send Email",
+            "Open Email", "Open Calendar\n", "Open Alarm", "Calendar Event\n", "'Search' + your question\n",
+            "'Youtube' + Type Of Video\n","'Directions To' + your destination",};
     private FloatingActionButton fab;
 
     //    private String ACCOUNT_TYPE_GOOGLE = "com.google";
@@ -66,8 +72,8 @@ public class sam_app extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
                 intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                        RecognizerIntent.LANGUAGE_MODEL_FREE_FORM) ;
-                intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS,1);
+                        RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+                intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 1);
                 speechRecognizer.startListening(intent);
             }
         });
@@ -87,13 +93,13 @@ public class sam_app extends AppCompatActivity {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle("Command List");
         String message = "";
-        for(int i = 0; i < commandRequest.length;i++){
+        for (int i = 0; i < commandRequest.length; i++) {
             message = message + commandRequest[i] + ":\t\t\tSay " + commands[i] + "\n";
         }
         alert.setMessage(message);
 
         // Create TextView
-        final TextView input = new TextView (this);
+        final TextView input = new TextView(this);
         alert.setView(input);
 
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -127,7 +133,7 @@ public class sam_app extends AppCompatActivity {
     private void startSpeechRecognizer() {
         try {
             boolean speechRecogniserAvalible = SpeechRecognizer.isRecognitionAvailable(getApplicationContext());
-            if(speechRecogniserAvalible) {
+            if (speechRecogniserAvalible) {
                 speechRecognizer = SpeechRecognizer.createSpeechRecognizer(getApplicationContext());
                 speechRecognizer.setRecognitionListener(new RecognitionListener() {
                     @Override
@@ -173,8 +179,7 @@ public class sam_app extends AppCompatActivity {
                     }
                 });
             }
-        }
-        catch (Exception exception){
+        } catch (Exception exception) {
             Log.d("IO Exception", "Exception Found" + exception.getStackTrace());
         }
     }
@@ -188,28 +193,23 @@ public class sam_app extends AppCompatActivity {
         String time = DateUtils.formatDateTime(getApplicationContext(), date.getTime(),
                 DateUtils.FORMAT_SHOW_TIME);
 
-        if(userCommand.contains("time")) { //word time and what is found
+        if (userCommand.contains("time")) { //word time and what is found
             Toast.makeText(getApplicationContext(),
                     "The time is " + time, Toast.LENGTH_LONG).show();
             say("The time is \"\t" + time + "\t\"");
-        }
-
-        else if(userCommand.contains("hello") || userCommand.contains("hi")){
+        } else if (userCommand.contains("hello") || userCommand.contains("hi")) {
             Random r = new Random();
             String morningEveningReply;
-            if(Integer.parseInt(time.substring(0,1)) < 12){
+            if (Integer.parseInt(time.substring(0, 1)) < 12) {
                 morningEveningReply = "Good Morning";
-            }
-            else {
+            } else {
                 morningEveningReply = "Good Evening";
             }
-            String[] replies = {"Hello", "Hi","Hola", morningEveningReply};
-            say(replies[r.nextInt(replies.length-1)] );
-        }
-        else if(userCommand.contains("your")&& userCommand.contains("name")){
+            String[] replies = {"Hello", "Hi", "Hola", morningEveningReply};
+            say(replies[r.nextInt(replies.length - 1)]);
+        } else if (userCommand.contains("your") && userCommand.contains("name")) {
             say("My name is SAM");
-        }
-        else if(userCommand.contains("directions to")) {
+        } else if (userCommand.contains("directions to")) {
             Intent goToDirections = new Intent(Intent.ACTION_VIEW);
 
             //example tesco wexford
@@ -217,11 +217,10 @@ public class sam_app extends AppCompatActivity {
 
             goToDirections.setData(Uri.parse("http://maps.google.co.in/maps?q=" + userCommand));
 
-            if(goToDirections.resolveActivity(getPackageManager() )!= null) {
+            if (goToDirections.resolveActivity(getPackageManager()) != null) {
                 startActivity(goToDirections);
             }
-        }
-        else if(userCommand.contains("search")) {
+        } else if (userCommand.contains("search")) {
             Intent search = new Intent(Intent.ACTION_VIEW);
 
             //example tesco wexford
@@ -229,15 +228,26 @@ public class sam_app extends AppCompatActivity {
 
             search.setData(Uri.parse("https://www.google.ie/search?q=" + userCommand.substring(7)));
 
-            if(search .resolveActivity(getPackageManager() )!= null) {
-                startActivity(search );
+            if (search.resolveActivity(getPackageManager()) != null) {
+                startActivity(search);
             }
-        }
-
-        else if(userCommand.contains("call")) {
+        } else if (userCommand.contains("call")) {
             getContactList(callUser.class);
         }
-        else if(userCommand.contains("date")){
+        else if(userCommand.contains("ring")){
+            try{
+                String contactName = userCommand.substring(5,userCommand.length());
+                String phoneNumberToCall = getContactNumber(contactName, getApplicationContext());
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(Uri.parse("tel:" + phoneNumberToCall));
+                startActivity(callIntent);
+            }
+            catch (Exception e){
+                Toast.makeText(this, "No contact found", Toast.LENGTH_SHORT).show();
+                getContactList(callUser.class);
+            }
+
+        }else if (userCommand.contains("date")) {
             Date year = null;
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
                 year = Calendar.getInstance().getTime();
@@ -245,32 +255,28 @@ public class sam_app extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "The date is " + year,
                         Toast.LENGTH_LONG).show();
             }
-        }
-        else if(userCommand.contains("message") || userCommand.contains("text")) {
+        } else if (userCommand.contains("message") || userCommand.contains("text")) {
             getContactList(textUser.class);
-        }
-        else if(userCommand.contains("email")){
-            if(userCommand.contains("email") && (userCommand.contains("view")
-                    || userCommand.contains("read") || userCommand.contains("open"))){
+        } else if (userCommand.contains("email")) {
+            if (userCommand.contains("email") && (userCommand.contains("view")
+                    || userCommand.contains("read") || userCommand.contains("open"))) {
                 // TODO: 27/03/2019 open gmail
                 Intent gmail = new Intent(getPackageManager()
                         .getLaunchIntentForPackage("com.google.android.gm"));
                 startActivity(gmail);
             }
-            else{
+            else {
                 Intent goToEmail = new Intent(getApplicationContext(), sendEmail.class);
                 startActivity(goToEmail);
             }
-        }
-        else if(userCommand.contains("to do list") || userCommand.contains("to-do list")){
+        } else if (userCommand.contains("to do list") || userCommand.contains("to-do list")) {
             Intent toDoList = new Intent(getApplicationContext(), com.example.samapp.ToDoList.toDoList.class);
             startActivity(toDoList);
-        }
-        else if(userCommand.contains("calendar")){
-            if(userCommand.contains("today") || userCommand.contains("todays") ||
+        } else if (userCommand.contains("calendar")) {
+            if (userCommand.contains("today") || userCommand.contains("todays") ||
                     userCommand.contains("today's") || userCommand.contains("open")) {
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                    Calendar beginTime = Calendar.getInstance();
+                        Calendar beginTime = Calendar.getInstance();
                     long timeInMillis = beginTime.getTimeInMillis();
                     Uri.Builder builder = CalendarContract.CONTENT_URI.buildUpon();
                     builder.appendPath("time");
@@ -285,30 +291,46 @@ public class sam_app extends AppCompatActivity {
                     return;
                 }
             }
-            else {
-                Intent calendarIntent = new Intent(getApplicationContext(), calendar.class);
-                startActivity(calendarIntent);
+            if(userCommand.contains("event")) {
+                Intent calendarEventIntent = new Intent(getApplicationContext(), createEvent.class);
+                startActivity(calendarEventIntent);
             }
-        }
-        else if(userCommand.contains("youtube")){
+        } else if (userCommand.contains("youtube")) {
             Intent youtubeIntent = new Intent();
             youtubeIntent.setData(
                     Uri.parse("https://www.google.ie/search?q=" + userCommand));
             startActivity(youtubeIntent);
-
             //            String videoSearch = userCommand.substring(8,userCommand.length());
 //            Intent youtubeIntent = new Intent();
 //            youtubeIntent.setData(Uri.parse("https://www.youtube.com/results?search_query="
 //                    + videoSearch + "&page=&utm_source=opensearch"));
 //            startActivity(youtubeIntent);
         }
-        else if(userCommand.contains("alarm")){
+        else if (userCommand.contains("alarm")) {
             Intent alarmIntent = new Intent(getApplicationContext(), Alarm.class);
             startActivity(alarmIntent);
-        }
-        else {
+        } else {
             say("Please try again");
         }
+    }
+
+    private String getContactNumber(String contactName, Context context) {
+        String phoneNumber = null;
+        String selection = ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME+" like'%" +
+                contactName +"%'";//query string to get name similiar to my contact name
+        String[] projection = new String[] { ContactsContract.CommonDataKinds.Phone.NUMBER};
+        Cursor c = context.getContentResolver().query(
+                ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                projection, selection, null, null
+        );
+        if (c.moveToFirst()) {
+            phoneNumber = c.getString(0);
+        }
+        c.close();
+        if(phoneNumber==null) {
+            phoneNumber = "Unsaved";
+        }
+        return phoneNumber;
     }
 
     private void getContactList(Class goToClass) {
@@ -317,7 +339,7 @@ public class sam_app extends AppCompatActivity {
                 null, null, null, null);
         ArrayList<String> phoneNumber = new ArrayList<>();
         ArrayList<String> contactName = new ArrayList<>();
-        ArrayList<String> contactID= new ArrayList<>();
+        ArrayList<String> contactID = new ArrayList<>();
 
         // if cursor found
         if ((cur != null ? cur.getCount() : 0) > 0) {
@@ -327,7 +349,7 @@ public class sam_app extends AppCompatActivity {
                 String name = cur.getString(cur.getColumnIndex(
                         ContactsContract.Contacts.DISPLAY_NAME));
 
-                if(cur.getInt(cur.getColumnIndex(
+                if (cur.getInt(cur.getColumnIndex(
                         ContactsContract.Contacts.HAS_PHONE_NUMBER)) > 0) {
                     Cursor pCur = cr.query(
                             ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
@@ -346,7 +368,7 @@ public class sam_app extends AppCompatActivity {
                 }
             }
         }
-        if(cur!=null) {
+        if (cur != null) {
             cur.close();
         }
 
@@ -362,13 +384,12 @@ public class sam_app extends AppCompatActivity {
         txtToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
-                if(txtToSpeech.getEngines().size() == 0){
+                if (txtToSpeech.getEngines().size() == 0) {
                     //no engines installed, not usuable on device.
                     Toast.makeText(getApplicationContext(), "Error: No TTS Engine on device",
                             Toast.LENGTH_LONG).show();
                     finish(); //exit app because unusable
-                }
-                else {
+                } else {
                     txtToSpeech.setLanguage(Locale.ENGLISH);
                 }
             }
@@ -376,12 +397,11 @@ public class sam_app extends AppCompatActivity {
     }
 
     public static void say(String text) {
-        if(Build.VERSION.SDK_INT >= 21){
-            txtToSpeech.speak(text,TextToSpeech.QUEUE_FLUSH,null,null);
-        }
-        else {
+        if (Build.VERSION.SDK_INT >= 21) {
+            txtToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
+        } else {
             //api level less than 21 requires three params, just incase I dedide to lower min api
-            txtToSpeech.speak(text,TextToSpeech.QUEUE_FLUSH,null);
+            txtToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
         }
     }
 
