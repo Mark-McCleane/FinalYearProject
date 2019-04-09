@@ -12,13 +12,8 @@
   <component name="ChangeListManager">
     <list default="true" id="30128819-bfa0-409f-bb18-171d70014973" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/samapp/sam_app.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/samapp/sam_app.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/samapp/sendEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/samapp/sendEmail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/samapp/textUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/samapp/textUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_alarm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_alarm.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_call_user.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_call_user.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_create_event.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_create_event.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_text_user.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_text_user.xml" afterDir="false" />
     </list>
     <ignored path="C:\Users\Mark College\Desktop\ClickMe\Files\SAMapp\app\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,7 +48,7 @@
     <session id="91724711">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="27" />
+          <entry key="project.closed" value="29" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.17" value="1" />
@@ -62,10 +57,11 @@
           <entry key="project.open.time.21" value="2" />
           <entry key="project.open.time.22" value="1" />
           <entry key="project.open.time.23" value="1" />
-          <entry key="project.open.time.24" value="1" />
+          <entry key="project.open.time.24" value="2" />
           <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.26" value="3" />
           <entry key="project.open.time.3" value="2" />
+          <entry key="project.open.time.31" value="1" />
           <entry key="project.open.time.34" value="1" />
           <entry key="project.open.time.36" value="1" />
           <entry key="project.open.time.37" value="1" />
@@ -78,43 +74,43 @@
           <entry key="project.open.time.74" value="1" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.91" value="1" />
-          <entry key="project.opened" value="32" />
+          <entry key="project.opened" value="34" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="1" />
-          <entry key="gradle" value="7" />
-          <entry key="java" value="170" />
+          <entry key="gradle" value="9" />
+          <entry key="java" value="172" />
           <entry key="kt" value="1" />
-          <entry key="xml" value="72" />
+          <entry key="xml" value="73" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="Groovy" value="7" />
-          <entry key="JAVA" value="170" />
+          <entry key="Groovy" value="9" />
+          <entry key="JAVA" value="172" />
           <entry key="Kotlin" value="1" />
-          <entry key="XML" value="72" />
+          <entry key="XML" value="73" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="29" />
           <entry key="gradle" value="99" />
-          <entry key="java" value="15079" />
+          <entry key="java" value="15304" />
           <entry key="kt" value="213" />
-          <entry key="txt" value="1503" />
+          <entry key="txt" value="1581" />
           <entry key="xml" value="1159" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="99" />
-          <entry key="JAVA" value="15079" />
+          <entry key="JAVA" value="15304" />
           <entry key="Kotlin" value="213" />
-          <entry key="PLAIN_TEXT" value="1532" />
+          <entry key="PLAIN_TEXT" value="1610" />
           <entry key="XML" value="1159" />
         </counts>
       </usages-collector>
@@ -131,34 +127,29 @@
     <favorites_list name="SAMapp" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/calendar_activities/createEvent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="232" selection-start-line="232" selection-end-line="232" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_create_event.xml">
-          <provider selected="true" editor-type-id="android-designer2" />
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="1819">
-              <caret line="107" column="8" selection-start-line="107" selection-start-column="8" selection-end-line="107" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/sam_app.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="49" column="56" selection-start-line="49" selection-start-column="56" selection-end-line="49" selection-end-column="56" />
+            <state relative-caret-position="238">
+              <caret line="48" column="75" selection-start-line="48" selection-start-column="75" selection-end-line="48" selection-end-column="75" />
               <folding>
+                <element signature="e#2062#2118#0" />
                 <element signature="method#userNeedsHelp#0;class#sam_app#0" />
+                <element signature="e#8367#8390#0" />
+                <element signature="e#11805#11886#0" />
+                <element signature="e#15770#16334#0" expanded="true" />
+                <element signature="e#16333#16334#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/callUser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="197" column="5" selection-start-line="180" selection-start-column="4" selection-end-line="197" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -189,10 +180,17 @@
       <find>Search</find>
       <find>calendar</find>
       <find>calendarIntent</find>
+      <find>&quot;call</find>
     </findStrings>
     <replaceStrings>
       <replace />
     </replaceStrings>
+  </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="KEY_STORE_PATH" value="C:\Users\Mark College\Desktop\ClickMe\Final Year Project\APK\APK.jks" />
+    <option name="KEY_ALIAS" value="key0" />
+    <option name="REMEMBER_PASSWORDS" value="true" />
+    <option name="BUILD_TARGET_KEY" value="apk" />
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -2615,7 +2613,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/samapp/RingtonePlaying.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_alarm_clock.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/samapp/AlarmClock.java" />
-        <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_send_email.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_to_do_list.xml" />
         <option value="$PROJECT_DIR$/src/main/res/drawable/ic_mic_black_24dp.xml" />
@@ -2631,12 +2628,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/samapp/textUser.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/samapp/sendEmail.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_create_event.xml" />
+        <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/samapp/sam_app.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
+    <option name="x" value="676" />
     <option name="width" value="697" />
     <option name="height" value="735" />
   </component>
@@ -2648,7 +2646,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -2669,24 +2668,19 @@
             </path>
             <path>
               <item name="app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-            </path>
-            <path>
-              <item name="app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="ExportApk.ApkPath" value="C:\Users\Mark College\Desktop\ClickMe\Files\SAMapp\app" />
+    <property name="ExportApk.BuildVariants" value="release" />
+    <property name="ExportApk.SignV2" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="device.picker.selection" value="FA74J0301976" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java" />
@@ -3042,7 +3036,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554489885354</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="updated command list helper, clean up UI! added some guides for the user">
+      <created>1554492727501</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1554492727501</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TodoView">
@@ -3056,9 +3057,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" sideWeight="0.50121653" side_tool="true" weight="0.32980332" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.2344932" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.21482602" />
       <window_info id="Structure" order="2" sideWeight="0.33576643" side_tool="true" weight="0.32980332" />
       <window_info id="Favorites" order="3" sideWeight="0.33576643" side_tool="true" weight="0.32980332" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -3073,7 +3075,7 @@
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.3294509" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.18910742" side_tool="true" weight="0.3409836" />
       <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.8313162" weight="0.52745426" />
-      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.8108926" weight="0.3409836" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.8108926" visible="true" weight="0.3409836" />
       <window_info anchor="bottom" id="Android Profiler" order="8" />
       <window_info active="true" anchor="bottom" id="Messages" order="9" sideWeight="0.49924356" visible="true" weight="0.3295082" />
       <window_info anchor="bottom" id="Inspection Results" order="10" sideWeight="0.49924356" weight="0.3295082" />
@@ -3157,7 +3159,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="call function working" />
     <MESSAGE value="sms function working" />
     <MESSAGE value="basic conversations" />
     <MESSAGE value="removed mainActivity" />
@@ -3182,7 +3183,8 @@
     <MESSAGE value="Added youtube search feature" />
     <MESSAGE value="simple code cleanup and deleted unused activities" />
     <MESSAGE value="create Event voice ui" />
-    <option name="LAST_COMMIT_MESSAGE" value="create Event voice ui" />
+    <MESSAGE value="updated command list helper, clean up UI! added some guides for the user" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated command list helper, clean up UI! added some guides for the user" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3212,14 +3214,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/todo_item.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="37" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Gmail.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/Gmail.java" />
     <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/java/lang/String.java">
@@ -3232,13 +3226,6 @@
     <entry file="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/02419751f0d843cf69cb25b20d887cfd/jars/classes.jar!/android/support/v7/app/AlertDialog.class" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/HelpFragment.java" />
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_help_list.xml" />
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="55">
-          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/hello_world_kotlin.kt" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/ToDoList/toDoListDBHelper.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -3273,14 +3260,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/AlarmClock.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/RingtonePlaying.java" />
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_alarm_clock.xml" />
-    <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="18" lean-forward="true" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/DatePickerFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -3389,13 +3368,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/calendar.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/callUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_call_user.xml">
       <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor">
@@ -3445,10 +3417,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/calendar_activities/createEvent.java">
+    <entry file="file://$PROJECT_DIR$/../build.gradle">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="232" selection-start-line="232" selection-end-line="232" />
+        <state relative-caret-position="272">
+          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="70" lean-forward="true" selection-start-line="16" selection-start-column="70" selection-end-line="16" selection-end-column="70" />
         </state>
       </provider>
     </entry>
@@ -3460,12 +3443,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/calendar_activities/createEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="232" selection-start-line="232" selection-end-line="232" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/callUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="197" column="5" selection-start-line="180" selection-start-column="4" selection-end-line="197" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/samapp/sam_app.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="49" column="56" selection-start-line="49" selection-start-column="56" selection-end-line="49" selection-end-column="56" />
+        <state relative-caret-position="238">
+          <caret line="48" column="75" selection-start-line="48" selection-start-column="75" selection-end-line="48" selection-end-column="75" />
           <folding>
+            <element signature="e#2062#2118#0" />
             <element signature="method#userNeedsHelp#0;class#sam_app#0" />
+            <element signature="e#8367#8390#0" />
+            <element signature="e#11805#11886#0" />
+            <element signature="e#15770#16334#0" expanded="true" />
+            <element signature="e#16333#16334#0" expanded="true" />
           </folding>
         </state>
       </provider>

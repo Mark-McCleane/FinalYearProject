@@ -3,6 +3,7 @@ package com.example.samapp;
 import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.ContentUris;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -40,14 +41,14 @@ public class sam_app extends AppCompatActivity {
     private SpeechRecognizer speechRecognizer;
     private TextView txtView;
     private FloatingActionButton helpFab;
-    private String[] commandRequest = {"Call Function", "Text Function", "Date Function",
+    private String[] commandRequest = {"Call Function","Ring Function", "Text Function", "Date Function",
             "Time Function", "To-Do List Function", "Send Email Function", "Open Email Function",
             "Open Calendar Function", "Open Alarm Function", "Create Calendar Event","Search Function",
             "Youtube Search Function", "Direction-To Function"};
 
-    private String[] commands = {"Call", "Text", "Date", "Time", "To-do list", "Send Email",
-            "Open Email", "Open Calendar", "Open Alarm", "Calendar Event", "'Search' + your question",
-            "'Youtube' + Type Of Video","'Directions To' + your destination",};
+    private String[] commands = {"Call","Ring + your contact name\n", "Text", "Date", "Time", "To-do list", "Send Email",
+            "Open Email", "Open Calendar\n", "Open Alarm", "Calendar Event\n", "'Search' + your question\n",
+            "'Youtube' + Type Of Video\n","'Directions To' + your destination",};
     private FloatingActionButton fab;
 
     //    private String ACCOUNT_TYPE_GOOGLE = "com.google";
@@ -232,7 +233,21 @@ public class sam_app extends AppCompatActivity {
             }
         } else if (userCommand.contains("call")) {
             getContactList(callUser.class);
-        } else if (userCommand.contains("date")) {
+        }
+        else if(userCommand.contains("ring")){
+            try{
+                String contactName = userCommand.substring(5,userCommand.length());
+                String phoneNumberToCall = getContactNumber(contactName, getApplicationContext());
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(Uri.parse("tel:" + phoneNumberToCall));
+                startActivity(callIntent);
+            }
+            catch (Exception e){
+                Toast.makeText(this, "No contact found", Toast.LENGTH_SHORT).show();
+                getContactList(callUser.class);
+            }
+
+        }else if (userCommand.contains("date")) {
             Date year = null;
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
                 year = Calendar.getInstance().getTime();
@@ -297,6 +312,25 @@ public class sam_app extends AppCompatActivity {
         } else {
             say("Please try again");
         }
+    }
+
+    private String getContactNumber(String contactName, Context context) {
+        String phoneNumber = null;
+        String selection = ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME+" like'%" +
+                contactName +"%'";//query string to get name similiar to my contact name
+        String[] projection = new String[] { ContactsContract.CommonDataKinds.Phone.NUMBER};
+        Cursor c = context.getContentResolver().query(
+                ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                projection, selection, null, null
+        );
+        if (c.moveToFirst()) {
+            phoneNumber = c.getString(0);
+        }
+        c.close();
+        if(phoneNumber==null) {
+            phoneNumber = "Unsaved";
+        }
+        return phoneNumber;
     }
 
     private void getContactList(Class goToClass) {
