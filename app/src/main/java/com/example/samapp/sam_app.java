@@ -269,7 +269,8 @@ public class sam_app extends AppCompatActivity {
                 Intent goToEmail = new Intent(getApplicationContext(), sendEmail.class);
                 startActivity(goToEmail);
             }
-        } else if (userCommand.contains("to do list") || userCommand.contains("to-do list")) {
+        } else if (userCommand.contains("to do list") || userCommand.contains("to-do list")
+                || userCommand.contains("todo list")) {
             Intent toDoList = new Intent(getApplicationContext(), com.example.samapp.ToDoList.toDoList.class);
             startActivity(toDoList);
         } else if (userCommand.contains("calendar")) {
