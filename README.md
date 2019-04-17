@@ -3,11 +3,12 @@ Description:  Smart Android Assistant Application that helps users with their da
 
 # Install Instructions
 # Option 1 - Clone Repository and Run App
-Prerequisite
+Prerequisite 
 Java installed and jvm set up.
 Have Windows, Linux or another operating system installed and working on your machine.
 
 Steps:
+
 Download and install Android Studio → https://developer.android.com/studio
  
 Open Android Studio and click “Check out project from Version Control”
