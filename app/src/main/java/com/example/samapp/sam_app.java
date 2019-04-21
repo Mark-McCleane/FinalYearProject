@@ -41,7 +41,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
-public class sam_app extends AppCompatActivity {
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.EasyPermissions;
+
+public class sam_app extends AppCompatActivity{
     private static TextToSpeech txtToSpeech;
     private SpeechRecognizer speechRecognizer;
     private TextView txtView;
@@ -56,6 +59,7 @@ public class sam_app extends AppCompatActivity {
             "'Youtube' + Type Of Video\n","'Directions To' + your destination",};
     private FloatingActionButton fab;
     private int MIC_PERMISSION = 1;
+    private static final int PERMISSIONS_EXCLUDING_MIC = 123 ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,12 +94,29 @@ public class sam_app extends AppCompatActivity {
     }
 
     private void RequestPermissions() {
-        requestMicrophonePermission();
+        requestRestOfPermissions();
+    }
+
+    @AfterPermissionGranted(PERMISSIONS_EXCLUDING_MIC)
+    private void requestRestOfPermissions() {
+        String[] perms = {Manifest.permission.READ_CALENDAR, Manifest.permission.READ_CONTACTS,
+                Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.SEND_SMS,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CALL_PHONE,
+                Manifest.permission.RECORD_AUDIO};
+        if (EasyPermissions.hasPermissions(this, perms)) {
+            // Already have permission, do the thing
+            // ...
+        } else {
+            // Do not have permissions, request them now
+            EasyPermissions.requestPermissions(this, "Permissions Required for certain " +
+                            "functionalities of this application",
+                    PERMISSIONS_EXCLUDING_MIC, perms);
+        }
     }
 
     private void requestMicrophonePermission() {
         if(ContextCompat.checkSelfPermission(sam_app.this, Manifest.permission.RECORD_AUDIO)
-                == PackageManager.PERMISSION_DENIED ){
+                == PackageManager.PERMISSION_DENIED ) {
             if(ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.RECORD_AUDIO)){
                 new AlertDialog.Builder(this)
@@ -105,8 +126,8 @@ public class sam_app extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         ActivityCompat.requestPermissions(sam_app.this, new String[]{
-                                Manifest.permission.RECORD_AUDIO}
-                                ,MIC_PERMISSION);
+                                Manifest.permission.RECORD_AUDIO},
+                                MIC_PERMISSION);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -125,15 +146,19 @@ public class sam_app extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if(requestCode == MIC_PERMISSION){
-            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(this,"Microphone Permission Granted",
-                        Toast.LENGTH_SHORT).show();
-            } else{
-                Toast.makeText(this, "Microphone Permission Denied",
-                        Toast.LENGTH_SHORT).show();
-            }
-        }
+//        if(requestCode == MIC_PERMISSION){
+//            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+//                Toast.makeText(this,"Microphone Permission Granted",
+//                        Toast.LENGTH_SHORT).show();
+//            } else{
+//                Toast.makeText(this, "Microphone Permission Denied",
+//                        Toast.LENGTH_SHORT).show();
+//            }
+//        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        // Forward results to EasyPermissions
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
     }
 
     private void userNeedsHelp() {
