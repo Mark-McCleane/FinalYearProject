@@ -1,11 +1,14 @@
 package com.example.samapp;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.icu.util.Calendar;
 import android.net.Uri;
@@ -17,10 +20,12 @@ import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.speech.tts.TextToSpeech;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -50,11 +55,7 @@ public class sam_app extends AppCompatActivity {
             "Open Email", "Open Calendar\n", "Open Alarm", "Calendar Event\n", "'Search' + your question\n",
             "'Youtube' + Type Of Video\n","'Directions To' + your destination",};
     private FloatingActionButton fab;
-
-    //    private String ACCOUNT_TYPE_GOOGLE = "com.google";
-//    private final String[] FEATURES_MAIL = {
-//            "service_mail"
-//    };
+    private int MIC_PERMISSION = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,7 @@ public class sam_app extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        RequestPermissions();
         //auto-generated
         fab = findViewById(R.id.fab);
         helpFab = findViewById(R.id.helpFab);
@@ -77,8 +79,6 @@ public class sam_app extends AppCompatActivity {
                 speechRecognizer.startListening(intent);
             }
         });
-
-
         helpFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,6 +87,53 @@ public class sam_app extends AppCompatActivity {
         });
         startTextToSpeech();
         startSpeechRecognizer();
+    }
+
+    private void RequestPermissions() {
+        requestMicrophonePermission();
+    }
+
+    private void requestMicrophonePermission() {
+        if(ContextCompat.checkSelfPermission(sam_app.this, Manifest.permission.RECORD_AUDIO)
+                == PackageManager.PERMISSION_DENIED ){
+            if(ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.RECORD_AUDIO)){
+                new AlertDialog.Builder(this)
+                .setTitle("Permission Needed")
+                .setMessage("This permission is needed to use this Application")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ActivityCompat.requestPermissions(sam_app.this, new String[]{
+                                Manifest.permission.RECORD_AUDIO}
+                                ,MIC_PERMISSION);
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).create().show();
+            }
+            else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.RECORD_AUDIO}, MIC_PERMISSION);
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(requestCode == MIC_PERMISSION){
+            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(this,"Microphone Permission Granted",
+                        Toast.LENGTH_SHORT).show();
+            } else{
+                Toast.makeText(this, "Microphone Permission Denied",
+                        Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     private void userNeedsHelp() {
@@ -108,22 +155,21 @@ public class sam_app extends AppCompatActivity {
                 // Do something with value!
             }
         });
-
-//        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//            public void onClick(DialogInterface dialog, int whichButton) {
-//                // Canceled.
-//            }
-//        });
         alert.show();
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent e) {
+
         float x = e.getX();
         float y = e.getY();
 
         switch (e.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                if(ContextCompat.checkSelfPermission(sam_app.this, Manifest.permission.RECORD_AUDIO)
+                        == PackageManager.PERMISSION_DENIED ){
+                    requestMicrophonePermission();
+                }
                 fab.performClick();
                 return true;
         }
