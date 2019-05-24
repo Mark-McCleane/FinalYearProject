@@ -34,3 +34,5 @@ Prerequisite
 Have Android device set up and allowed to install APK’s from google drive and google chrome https://www.wikihow.tech/Install-APK-Files-on-Android 
 
 Download APK → https://drive.google.com/file/d/19jXU4NAfkSGDl3GTLw3kHSFDVxp5T0hL/view?usp=sharing
+
+Enable all permissions. Enable Calendar for calendar use, Contacts for contacts use such as calls and texts, Location for the directions to function, Microphone for microphone permissions(Always has this enabled) , SMS for messaging, Storage and Telephone for calling and ring function
